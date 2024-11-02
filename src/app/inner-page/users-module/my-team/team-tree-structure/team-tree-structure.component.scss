@@ -1,0 +1,53 @@
+// .tree {
+//     list-style-type: none;
+//     padding-left: 0;
+//   }
+
+//   .node {
+//     display: flex;
+//     align-items: center;
+//     cursor: pointer;
+//   }
+
+//   .node .toggle {
+//     display: inline-block;
+//     width: 20px;
+//     text-align: center;
+//     margin-right: 5px;
+//     font-weight: bold;
+//     user-select: none;
+//   }
+
+.hrcss {
+  height: 3px;
+  background: #395f13;
+  opacity: 1;
+}
+
+//   .treedesign{
+//     border: 1px solid;
+//     padding: 5px;
+//     margin: 3px;
+//     border-radius: 5px;
+//   }
+
+.imagesize img {
+  width: 60%;
+}
+
+// .p-organizationchart .p-organizationchart-node-content {
+//   border: 1px solid #dee2e6;
+//   background: #ffffff;
+//   color: #495057;
+//   padding: 0.25rem !important;
+// }
+
+::ng-deep .p-organizationchart-node-content {
+  //  border: 1px solid #dee2e6;
+  //  background: #ffffff;
+  border: none !important;
+  background: #ffffff00 !important;
+  color: #395f13 !important;
+  padding: 0rem !important;
+  width: 150px;
+}

@@ -1,0 +1,105 @@
+<!-- qr-payment-dialog.component.html -->
+<mat-card class="dialog-container">
+  <div style="display: flex; justify-content: space-between; background-color: #395f13;">
+    <img src="../../../../../assets/images/logo/always_green_logo.png" class=" w-18" style="    width: 18% !important;
+    padding: 4px 8px;">
+    <h2 mat-dialog-title style="color: white;">Complete Your Payment
+
+    </h2>
+    <button class="closeBtn" mat-icon-button [mat-dialog-close]="false">
+      <mat-icon class="close-icon" style="color: white;">close</mat-icon>
+    </button>
+  </div>
+
+
+  <mat-dialog-content>
+
+    <!-- <div class="qr-code-section">
+        <mat-card class="qr-code-card">
+          <img src="../../../../../assets/images/admin-images/QRCode.jpeg" alt="QR Code for Payment" class="qr-code-image" />
+        </mat-card>
+        <p class="instructions">Scan this QR code to make your payment.</p>
+      </div>
+
+      <div class="upload-section">
+        <mat-form-field appearance="fill" class="upload-field">
+          <mat-label>Upload Payment Screenshot</mat-label>
+          <input type="file"  (change)="onFileSelected($event)" accept="image/*">
+        </mat-form-field>
+      </div> -->
+    <div>
+
+
+
+      <div class="donate-container">
+
+        <!-- Left side: QR code -->
+        <div class="qr-code-section">
+          <!-- <h2>Scan to Donate</h2> -->
+          <img src="../../../../../assets/images/admin-images/QRCode1.jpeg" alt="QR Code" class="qr-code-image">
+        </div>
+
+        <!-- Right side: Bank details -->
+        <div class="bank-details-section">
+
+          <h2>Bank Details</h2>
+          <ul class="bank-info">
+            <li><strong>Bank Name:</strong> INDIAN OVERSEAS BANK</li>
+            <li><strong>Account Holder:</strong> ALWAYS GREENLIVE</li>
+            <li><strong>Account Number:</strong> 113702000001825</li>
+            <li><strong>IFSC Code:</strong> IOBA0001137</li>
+            <li><strong>Branch:</strong> SECTOR - 12, FARIDABAD(1137) </li>
+          </ul>
+          <p></p>
+
+        </div>
+
+      </div>
+
+    </div>
+    <hr>
+    <div class="container"  >
+      <h4 class="paymenth">Please Upload Your Payment Receipt</h4>
+      <p class="payemntp">Thank you for making the payment. Please upload the payment receipt in the section below to
+        confirm your
+        transaction.
+        This will help us process your order/request promptly. If you face any issues during the upload, feel free to
+        contact our support team.</p>
+
+
+      <div class="">
+       
+          <div class="uploadScreenshot">
+            <div class="">
+              <label for="screenshotUpload" class="btn btn-primary" style="background-color: #395f13;">Upload Screenshot</label>
+              <input id="screenshotUpload" type="file" class="inputUpload" #brochureFileInput
+                accept=".jpg, .jpeg, .png, .pdf" (change)="uploadDocumentFile(brochureFileInput.files)" hidden>
+            </div>
+
+
+            <!-- Display the uploaded image -->
+            <div class="" *ngIf="true" class="screenshot-preview">
+              <img [src]="prefixforpayment + PaymentUpload.get('paymentfileName')?.value" alt="Uploaded Screenshot" />
+            </div>
+          
+          </div>
+          <div class="form-group col-md-6 mt-3">
+            <mat-form-field class="example-full-width">
+              <mat-label>Transaction id</mat-label>
+              <input matInput placeholder="Please enter transaction ID" formControlName="email">
+            </mat-form-field>
+          </div>
+        
+
+       
+        <!-- <button class="btn btn-success"  (click)="submitPayment()">Submit</button> -->
+      </div>
+
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="action-buttons">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="submitPayment()" [disabled]="PaymentUpload.get('paymentfileName')?.value ==''">Upload</button>
+  </mat-dialog-actions>
+</mat-card>

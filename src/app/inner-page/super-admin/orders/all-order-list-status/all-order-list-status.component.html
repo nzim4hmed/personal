@@ -1,0 +1,118 @@
+<div class="container-fluid">
+	<div class="row justify-content-between mb-2">
+		<div class="col-md-auto">
+			<h2>All Orders List</h2>
+		</div>
+		<div class="col-md-3 col-12 ">
+			<mat-form-field class="example-full-width ">
+				<mat-label>Search </mat-label>
+				<input matInput (keyup)="applyFilter($event)" placeholder="Search Product" #input />
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="row user-list-table">
+		<div class="table-responsive">
+			<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table" matSort>
+
+				<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  matSort  multiTemplateDataRows> -->
+				<!-- Position Column -->
+				<ng-container matColumnDef="sr_no">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+					<td mat-cell *matCellDef="let element; let i = index;"> {{element.tableIndex}} </td>
+				</ng-container>
+
+				<!-- Product Image Column -->
+				<ng-container matColumnDef="product_image">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Product </th>
+					<td mat-cell *matCellDef="let element">
+						<img [src]="prefixViewPath + element.checkout.cart.product.product_image"
+							alt="{{element.checkout.cart.product.product_name}}">
+					</td>
+				</ng-container>
+
+				<!-- Product Name Column -->
+				<ng-container matColumnDef="product_name">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+					<td mat-cell *matCellDef="let element"> {{element.checkout.cart.product.product_name}} </td>
+				</ng-container>
+
+				<!-- Category Name Column -->
+				<ng-container matColumnDef="category_name">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+					<td mat-cell *matCellDef="let element"> {{element.checkout.cart.product.product_type.category_name}}
+					</td>
+				</ng-container>
+
+				<!-- Quantity Column -->
+				<ng-container matColumnDef="quantity">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+					<td mat-cell *matCellDef="let element"> {{element.checkout.cart.quantity}} </td>
+				</ng-container>
+
+				<!-- Price per Unit Column -->
+				<ng-container matColumnDef="price_per_unit">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Price/Unit </th>
+					<td mat-cell *matCellDef="let element"> ₹{{element.checkout.cart.price_per_unit}} </td>
+				</ng-container>
+
+
+
+				<!-- Total Amount Column -->
+				<ng-container matColumnDef="total_amount">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Total Amount </th>
+					<td mat-cell *matCellDef="let element"> ₹{{element.checkout.total_amount}} </td>
+				</ng-container>
+
+
+
+				<!-- Payment Verify Column -->
+				<ng-container matColumnDef="client_status">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Client Status </th>
+					<td mat-cell *matCellDef="let element"> {{element.payment_status_client}} </td>
+				</ng-container>
+
+				<!-- Payment Verify Column -->
+				<ng-container matColumnDef="status">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+					<td mat-cell *matCellDef="let element"> {{'-'}} </td>
+				</ng-container>
+
+				<!-- Payment Verify Column -->
+				<ng-container matColumnDef="verifystatus">
+					<th mat-header-cell *matHeaderCellDef> Verify Status </th>
+					<td mat-cell *matCellDef="let element">
+						<div style="cursor: pointer;">
+
+							<!-- <mat-icon>edit</mat-icon>  -->
+							<button mat-raised-disabled color="primary"
+								*ngIf="element.payment_status_client=='Pending'">
+								<mat-icon>payment</mat-icon>
+								Verify Status
+							</button>
+							<button mat-raised-button color="primary" (click)="verifying(element)"
+								*ngIf="element.payment_status_client=='Completed'">
+								<mat-icon>payment</mat-icon>
+								Verify Status
+							</button>
+						</div>
+					</td>
+				</ng-container>
+
+				<!-- Header and Row Declarations -->
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+			</table>
+		</div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-12">
+			<div class="paginator-container ">
+				<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of User List"
+					class="bg-transparent"></mat-paginator>
+			</div>
+		</div>
+	</div>
+
+</div>

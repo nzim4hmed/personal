@@ -1,0 +1,229 @@
+<div class="sidebar-main">
+    <!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+<div class="user-profile"
+style="background: url(../../../../../../assets/images/admin-images/background/user-info.jpg) no-repeat;">
+<!-- User profile image -->
+<div class="profile-img"> <img src="../../../../../../assets/images/admin-images/users/profile.png" alt="user">
+</div>
+<!-- User profile text-->
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+<div class="profile-text"><a class="">{{userDetails.role | capitalize}} Dashboard <i
+            class="ti-angle-down font-12 m-l-5"></i></a></div>
+<!-- <mat-menu #sdprofile="matMenu" class="mymegamenu">
+    <button mat-menu-item>
+        <mat-icon fontIcon="settings"></mat-icon> Settings </button>
+    <button mat-menu-item>
+        <mat-icon fontIcon="account_box"></mat-icon> Profile </button>
+    <button mat-menu-item>
+        <mat-icon fontIcon="notifications_off"></mat-icon> Disable notifications </button>
+    <button mat-menu-item (click)="onLogOut()">
+        <mat-icon fontIcon="exit_to_app"></mat-icon> Sign Out </button>
+</mat-menu> -->
+
+</div>
+<!-- <mat-nav-list appAccordion>
+<mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected">
+    <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+        <mat-icon>{{ menuitem.icon }}</mat-icon>
+        <span>{{ menuitem.name }}</span>
+        <span fxFlex></span>
+    </a>
+</mat-list-item>
+</mat-nav-list> -->
+
+
+<!-- User Routes -->
+<div *ngIf="userRole">
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of userDashboard" routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name }}</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+</mat-nav-list>
+</div>
+
+<div *ngIf="userRole">
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Profile
+            </mat-panel-title>
+            <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list appAccordion>
+            <mat-list-item appAccordionLink *ngFor="let menuitem of profileLinks" routerLinkActive="selected">
+                <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                    <span>{{ menuitem.name }}</span>
+                    <span fxFlex></span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</mat-accordion>
+</div>
+<div *ngIf="userRole" class="mt-1">
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Team
+            </mat-panel-title>
+            <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list appAccordion>
+            <mat-list-item appAccordionLink *ngFor="let menuitem of TeamLinks" routerLinkActive="selected">
+                <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                    <span>{{ menuitem.name }}</span>
+                    <span fxFlex></span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</mat-accordion>
+</div>
+<div *ngIf="userRole" class="mt-1">
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Product
+            </mat-panel-title>
+            <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list appAccordion>
+            <mat-list-item appAccordionLink *ngFor="let menuitem of userMocLinks" routerLinkActive="selected">
+                <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                    <span>{{ menuitem.name }}</span>
+                    <span fxFlex></span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</mat-accordion>
+</div>
+
+
+
+
+<!-- Admin Routes -->
+<div *ngIf="AdminRole">
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of adminDashboard" routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name }}</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+</mat-nav-list>
+</div>
+<div *ngIf="AdminRole">
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Product
+            </mat-panel-title>
+            <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list appAccordion>
+            <mat-list-item appAccordionLink *ngFor="let menuitem of adminMocLinks" routerLinkActive="selected">
+                <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                    <span>{{ menuitem.name }}</span>
+                    <span fxFlex></span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</mat-accordion>
+</div>
+<div *ngIf="AdminRole" class="mt-1">
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Category
+            </mat-panel-title>
+            <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list appAccordion>
+            <mat-list-item appAccordionLink *ngFor="let menuitem of masterLinks" routerLinkActive="selected">
+                <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                    <span>{{ menuitem.name }}</span>
+                    <span fxFlex></span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</mat-accordion>
+</div>
+<div *ngIf="AdminRole" class="mt-1">
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Users 
+            </mat-panel-title>
+            <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list appAccordion>
+            <mat-list-item appAccordionLink *ngFor="let menuitem of usersLinks" routerLinkActive="selected">
+                <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                    <span>{{ menuitem.name }}</span>
+                    <span fxFlex></span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</mat-accordion>
+</div>
+<div *ngIf="AdminRole" class="mt-1">
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Orders 
+            </mat-panel-title>
+            <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list appAccordion>
+            <mat-list-item appAccordionLink *ngFor="let menuitem of allOrdersLinks" routerLinkActive="selected">
+                <a class="" appAccordionToggle [routerLink]="[menuitem.state]" *ngIf="menuitem.type === 'link'">
+                    <mat-icon>{{ menuitem.icon }}</mat-icon>
+                    <span>{{ menuitem.name }}</span>
+                    <span fxFlex></span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-expansion-panel>
+</mat-accordion>
+</div>
+</div>

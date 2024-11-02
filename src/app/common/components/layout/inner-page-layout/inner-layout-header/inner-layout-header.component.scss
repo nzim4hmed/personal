@@ -1,0 +1,11 @@
+.mat-badge-content {
+    color: white;
+    background: #8e0000;
+}
+
+.mat-badge-medium.mat-badge-after .mat-badge-content {
+    right: 9px;
+}
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+    top: -5px;
+}

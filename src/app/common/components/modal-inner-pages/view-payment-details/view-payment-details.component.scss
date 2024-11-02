@@ -1,0 +1,48 @@
+// .receipt-image {
+//     width: 100%;
+//     max-width: 300px;
+//     border: 1px solid #ddd;
+//     border-radius: 5px;
+//     padding: 5px;
+//   }
+//   .container-fluid {
+//     padding: 20px;
+//   }
+//   h5 {
+//     margin-bottom: 15px;
+//   }
+//   p {
+//     margin: 5px 0;
+//   }
+
+.order-details p {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+  .order-details strong {
+    width: 45%;
+  }
+  .order-details span {
+    width: 50%;
+    text-align: right;
+  }
+  .receipt-image {
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  .container-fluid {
+    padding: 20px;
+  }
+  h5 {
+    margin-bottom: 15px;
+  }
+  .h11{
+    font-weight: 600;
+    color: #395f13;
+  }
+  
+  

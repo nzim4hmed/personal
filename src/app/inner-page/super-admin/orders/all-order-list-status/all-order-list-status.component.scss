@@ -1,0 +1,44 @@
+@import  '../../../../../assets/styles/component/inputs.scss';
+
+  
+
+
+.user-list-table{
+ 
+  thead{
+    text-align: center;
+  }
+
+      th{
+        background-color: #395f13;
+        color: #fff;
+        vertical-align: middle;
+        // text-align: center;
+        min-width: 100px;
+      }
+      th:first-child{
+        width: 80px;
+      }
+    //   th:nth-child(3){
+    //     min-width: 150px;
+    //   }
+    //   th:nth-child(8){
+    //     min-width: 150px;
+    //   }
+      td{
+        // text-align: center;
+      }
+ 
+      ::ng-deep .mat-sort-header-arrow{
+        opacity: 1 !important;
+        color: #fff !important;
+      }  
+
+ 
+      img{
+        width: 50px;
+      }
+}  
+
+  
+  

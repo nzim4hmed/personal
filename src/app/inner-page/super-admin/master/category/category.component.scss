@@ -1,0 +1,126 @@
+.inputFileUpload-wraper .uploadLevel{background-color: #fff;
+    cursor: pointer;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 20px;
+  border-radius: 4px;
+  display: inline-block;cursor: pointer;}
+  .inputFileUpload-wraper .inputUpload{position: absolute;
+    cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  left: 0;}
+  .inputFileUpload-wraper a{color: inherit;}
+  .inputFileUpload-wraper{height: 56px !important; background-color: white;}
+  .fa-solid.fa-eye{color: #4D4D4D;}
+  
+  .mdc-text-field--filled:not(.mdc-text-field--disabled)
+  .mdc-line-ripple::before {
+  border: none !important;
+  }
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+  border: none !important;
+  }
+  ::ng-deep {
+  .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color:#376B78 !important;
+  }
+  .mat-mdc-form-field-bottom-align {
+    display: none !important;
+  }
+  
+  .mat-mdc-form-field {
+    width: 100% !important;
+    background-color: #ffffff !important;
+    border-bottom: 0px !important;
+  }
+  
+  .mdc-text-field--filled:not(.mdc-text-field--disabled)
+    .mdc-line-ripple::before {
+    border-bottom-color: transparent !important;
+    background-color: white !important;
+  
+    :hover {
+      border-bottom-color: transparent !important;
+    }
+  }
+  
+  .mdc-text-field--filled .mdc-line-ripple::after {
+    border-bottom-color: transparent !important;
+  
+    :hover {
+      border-bottom-color: transparent !important;
+    }
+  }
+  
+  .mat-mdc-form-field-focus-overlay {
+    background-color: #ffffff !important;
+  }
+  
+  // thead {
+  //     background-color: #F2F2F2 !important;
+  // }
+  
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #ffffff !important;
+    border: 1px solid #c8c8c8 !important;
+    border-radius: 4px !important;
+  }
+  
+  .mat-mdc-form-field-focus-overlay {
+    background-color: white !important;
+  }
+  
+  .mdc-text-field--filled {
+    background-color: #ffffff !important;
+    border: 1px solid #c8c8c8 !important;
+  }
+  
+  // .mdc-text-field {
+  //   // height: 56px;
+  // }
+  
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+  }
+  }
+
+
+
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .user-list-table{
+ 
+    thead{
+      text-align: center;
+    }
+  
+        th{
+          background-color: #395f13;
+          color: #fff;
+          vertical-align: middle;
+          // text-align: center;
+          min-width: 100px;
+        }
+        // th:first-child{
+        //   width: 80px;
+        // }
+        // th:nth-child(3){
+        //   min-width: 150px;
+        // }
+        // th:nth-child(8){
+        //   min-width: 150px;
+        // }
+        td{
+          // text-align: center;
+        }
+   
+        ::ng-deep .mat-sort-header-arrow{
+          opacity: 1 !important;
+          color: #fff !important;
+        }  
+  }  
+  

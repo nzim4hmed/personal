@@ -1,0 +1,120 @@
+.registration-form{
+    box-shadow: 0px 0px 50px rgba(126, 142, 159, 0.3);
+    padding: 35px;
+    border-radius: 10px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled)
+.mdc-line-ripple::before {
+border: none !important;
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+border: none !important;
+}
+::ng-deep {
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color:#376B78 !important;
+}
+.mat-mdc-form-field-bottom-align {
+  display: none !important;
+}
+
+.mat-mdc-form-field {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  border-bottom: 0px !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled)
+  .mdc-line-ripple::before {
+  border-bottom-color: transparent !important;
+  background-color: white !important;
+
+  :hover {
+    border-bottom-color: transparent !important;
+  }
+}
+
+.mdc-text-field--filled .mdc-line-ripple::after {
+  border-bottom-color: transparent !important;
+
+  :hover {
+    border-bottom-color: transparent !important;
+  }
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: #ffffff !important;
+}
+
+// thead {
+//     background-color: #F2F2F2 !important;
+// }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #ffffff !important;
+  border: 1px solid #c8c8c8 !important;
+  border-radius: 4px !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: white !important;
+}
+
+.mdc-text-field--filled {
+  background-color: #ffffff !important;
+  border: 1px solid #c8c8c8 !important;
+}
+
+// .mdc-text-field {
+//   // height: 56px;
+// }
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+}
+
+.clr-green{
+  color:#395f13 !important;
+}
+
+.saveButton{
+  background: #395f13 !important;
+  color: white !important;
+  font-size: 18px; 
+
+}
+
+.danger{
+  font-size: 12px;
+  color: rgb(197, 0, 0);
+}
+
+
+// mat-form-field {
+//   position: relative;
+// }
+
+// mat-icon-button {
+//   position: absolute;
+//   top: 50%;
+//   right: 0;
+//   transform: translateY(-50%);
+// }
+
+::ng-deep .my-pass{
+
+  .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: flex;
+  }
+  .mat-mdc-icon-button.mat-mdc-button-base {
+    width: 48px;
+    height: 48px;
+    top: 4px;
+    padding: 12px;
+  }
+}
+

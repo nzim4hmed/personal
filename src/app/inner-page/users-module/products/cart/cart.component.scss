@@ -1,0 +1,153 @@
+/* General styles */
+.cart-container {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cart-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.cart-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table thead {
+    background-color: #f8f8f8;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.cart-table img.product-image {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+}
+
+.remove-button {
+    background: none;
+    border: none;
+    color: #007185;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.remove-button:hover {
+    text-decoration: none;
+}
+
+.cart-summary {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.coupon-code {
+    margin-bottom: 20px;
+}
+
+.coupon-code h3 {
+    margin: 0 0 10px;
+}
+
+.coupon-input {
+    padding: 10px;
+    width: calc(100% - 110px);
+    margin-right: 10px;
+    border: 1px solid #ddd;
+}
+
+.apply-coupon {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #f0c14b;
+    color: #111;
+    cursor: pointer;
+}
+
+.apply-coupon:hover {
+    background-color: #e7a33e;
+}
+
+.cart-totals h2 {
+    margin: 0 0 10px;
+}
+
+.totals-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.totals-table th,
+.totals-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.checkout-button {
+    padding: 15px 20px;
+    border: none;
+    background-color: #f04e23;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.checkout-button:hover {
+    background-color: #e04f28;
+}
+
+.checkout-button:disabled {
+    background-color: #ccc; 
+    color: #666; 
+    cursor: not-allowed; 
+}
+
+
+
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .quantity-input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 16px;
+  }
+  

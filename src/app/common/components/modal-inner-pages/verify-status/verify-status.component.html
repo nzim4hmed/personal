@@ -1,0 +1,89 @@
+<!-- qr-payment-dialog.component.html -->
+<mat-card class="dialog-container">
+  <div style="display: flex; justify-content: space-between; background-color: #395f13;">
+    <img src="../../../../../assets/images/logo/always_green_logo.png" class=" w-18" style="    width: 18% !important;
+      padding: 4px 8px;">
+    <h2 mat-dialog-title style="color: white;">Verify Client Payment and Update Status
+
+    </h2>
+    <button class="closeBtn" mat-icon-button [mat-dialog-close]="false">
+      <mat-icon class="close-icon" style="color: white;">close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <!-- <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="h11 text-underline">Please verify the payment Details</h3>
+          <img [src]="prefixforpayment + paymentFileName" alt="QR Code" class="qr-code-image">
+         
+          <div class="mt-4">
+            <p><strong>Transaction ID:</strong> <span>{{productData.transactionID}}</span></p>
+            <p><strong>Order Number:</strong> <span>{{productData.order_number}}</span></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3 class="text-center h11">Please add expected delevery Date</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <h5>From Date</h5>
+              <mat-calendar [selected]="selectedDate" (selectedChange)="onSelect($event)">
+              </mat-calendar>
+            </div>
+            <div class="col-md-6">
+              <h5>To Date</h5>
+              <mat-calendar [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <!-- Payment Verification Section -->
+        <div class="col-md-4">
+          <div class="card p-4 shadow-sm">
+            <h3 class="text-underline text-center mb-2 h11">Please verify the payment details</h3>
+            <hr class="hr1">
+            <img [src]="prefixforpayment + paymentFileName" alt="QR Code"
+              class="w-100 qr-code-image mx-auto d-block mb-3">
+            <hr>
+            <div class="mt-4">
+              <p><strong>Transaction ID:</strong> <span>{{paymentDetails.transactionID}}</span></p>
+              <p><strong>Order Number:</strong> <span>{{paymentDetails.order_number}}</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expected Delivery Date Section -->
+        <div class="col-md-8">
+          <div class="card p-4 shadow-sm">
+            <h3 class="text-center mb-2 h11">Please add expected delivery date</h3>
+            <hr class="hr1">
+            <div class="row">
+              <!-- From Date Calendar -->
+              <div class="col-md-6 text-center">
+                <h5 class="h12">From Date</h5>
+                <mat-calendar class="matclndr" [selected]="selectedFromDate" (selectedChange)="onSelectFrom($event)"
+                  [minDate]="minDate"></mat-calendar>
+              </div>
+              <!-- To Date Calendar -->
+              <div class="col-md-6 text-center">
+                <h5 class="h12">To Date</h5>
+                <mat-calendar class="matclndr" [selected]="selectedToDate" (selectedChange)="onSelectTo($event)"
+                  [minDate]="selectedFromDate? selectedFromDate: minDate "></mat-calendar>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+  </mat-dialog-content>
+  <mat-dialog-actions class="action-buttons">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="submitPayment()"
+      [disabled]="!this.verifyStatusForm.valid">Submit</button>
+  </mat-dialog-actions>
+</mat-card>

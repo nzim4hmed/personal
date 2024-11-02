@@ -1,0 +1,123 @@
+<div class="container">
+    <h2>Add Product</h2>
+    <form [formGroup]="ProductForm">
+        <div class="row">
+            <div class="col-md-6 my-2">
+                <mat-form-field appearance="fill">
+                    <mat-label>Product Catergory</mat-label>
+                    <mat-select formControlName="category_id">
+                        <!-- <mat-option value="Ayurvedic product">Ayurvedic product</mat-option>
+                        <mat-option value="Food supplement">Food supplement</mat-option>
+                        <mat-option value="Kitchen Care">Kitchen Care</mat-option>
+                        <mat-option value="personal care product">personal care product</mat-option>
+                        <mat-option value="agriculture product">agriculture product</mat-option>
+                        <mat-option value="Veterinay product">Veterinay product</mat-option>
+                        <mat-option value="Wellness Product">Wellness Product</mat-option> -->
+                        <mat-option *ngFor="let category of categoryMaster" [value]="category.id">
+                            {{category.category_name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 my-2 ">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Product Name</mat-label>
+                    <input matInput placeholder="Product Name" formControlName="product_name">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 my-2">
+                <div class="form-floating  position-relative">
+                    <div class="inputFileUpload-wraper border rounded-1 d-flex align-items-center">
+                        <div class="inputfileLevel position-relative">
+                            <span class="text-uppercase uploadLevel ">Product Image</span>
+                            <input type="file" class="inputUpload" #brochureFileInput  accept=".jpg, .jpeg, .png, .pdf"
+                            (change)="uploadDocumentFile(brochureFileInput.files)" >
+                          
+                        </div>
+                        <a *ngIf="ProductForm.get('product_image')?.value" [href]="prefixViewPath + ProductForm.get('product_image')?.value" target="_blank">
+                            <mat-icon class="position-absolute" style="right: 10px; top: 25%;">remove_red_eye</mat-icon>
+                        </a>
+                     
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 my-2">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Market Retail Price (MRP)</mat-label>
+                    <input type="number" matInput placeholder="MRP" formControlName="mrp">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 my-2">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Distributor  Price (DP)</mat-label>
+                    <input type="number" matInput placeholder="DP" formControlName="dp">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 my-2">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Business Volume (BV)</mat-label>
+                    <input type="number" matInput placeholder="BV" formControlName="business_volume">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 my-2">
+                <mat-form-field appearance="fill">
+                    <mat-label>Stock Type</mat-label>
+                    <mat-select formControlName="stock_type">
+                        <mat-option value="purchase">Purchase</mat-option>
+                       
+                        <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                        </mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 my-2">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Stock Quantity</mat-label>
+                    <input type="number" matInput placeholder="Quantity" formControlName="stock_qty">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+           
+            <div class="col-md-6 my-2">
+                <mat-form-field appearance="fill">
+                    <mat-label>Tax Rate</mat-label>
+                    <mat-select formControlName="tax_rate">
+                        <mat-option value="GST@5">GST 5%</mat-option>
+                        <mat-option value="GST@12">GST 12%</mat-option>
+                        <mat-option value="GST@18">GST 18%</mat-option>
+                        <mat-option value="IGST@12">IGST 12%</mat-option>
+                        <mat-option value="IGST@18">IGST 18%</mat-option>
+                        <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                        </mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 my-2">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Please write here" formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+           
+            <div class="col-md-12 my-2 d-flex align-items-center justify-content-start">
+
+                <button type="button" mat-raised-button color="primary" (click)="saveProduct(ProductForm)">Save</button>
+                <button type="button" mat-raised-button color="warn" class="ms-2" (click)="clearform()">Clear</button>
+             
+            </div>
+        </div>
+    </form>
+</div>

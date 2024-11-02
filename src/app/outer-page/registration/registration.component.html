@@ -1,0 +1,276 @@
+<div class="hb_breadcrumbs_wrapper">
+  <div class="hb_overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="hb_pageheading wow fadeIn" data-wow-delay="1s">
+          <h3>Registration</h3>
+          <ol class="breadcrumb">
+            <li><a [routerLink]="['/home']">Home</a></li>
+            <li class="active">Registration</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hb_white_wrapper WhoWeAre about_sec about-padding">
+  <div class="container">
+    <div class="row">
+      <div class="registration-form" [formGroup]="registrationForm">
+        <h2 class="d-flex justify-content-center">Registration Form</h2>
+        <form>
+          <div class="sponsor-information">
+            <h4 class="clr-green">Sponsor Information</h4>
+            <div class="row">
+              <div class="form-group col-md-6 mt-2">
+                <!-- <label for="sponsorId">Sponsor ID</label> -->
+                <mat-form-field class="example-full-width">
+                  <mat-label>Sponsor ID</mat-label>
+                  <input type="text" matInput placeholder="Sponsor ID" #sponsor_id formControlName="sponsor_id"
+                    (change)="verifyIDOnChange(sponsor_id.value)">
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6 mt-2">
+                <!-- <label for="sponsorId">Sponsor ID</label> -->
+                <mat-form-field class="example-full-width">
+                  <!-- <mat-label>Sponsor Name</mat-label> -->
+                  <input type="text" matInput placeholder="Sponsor Name" formControlName="sponsor_name" readonly [disabled]="true">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="personal-details">
+            <h4 class="clr-green mt-3">Personal Details</h4>
+            <div class="row">
+              <div class="form-group col-md-6 mt-2">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Full Name</mat-label>
+                  <input matInput placeholder="Please enter full name" formControlName="name">
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6 mt-2">
+                <mat-form-field appearance="fill" (click)="picker.open()">
+                  <mat-label>DOB</mat-label>
+                  <input  (keypress)="false" matInput [matDatepicker]="picker" formControlName="dob" placeholder="Please select DOB">
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 mt-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="gender" placeholder="Please select gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6 mt-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>Marital Status</mat-label>
+                  <mat-select formControlName="marital_status" placeholder="Please select marital status">
+                    <mat-option value="Single">Single</mat-option>
+                    <mat-option value="Married">Married</mat-option>
+                    <mat-option value="Divorced">Divorced</mat-option>
+                    <mat-option value="Widowed">Widowed</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 mt-3">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Address</mat-label>
+                  <textarea matInput placeholder="please enter your address" formControlName="address"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6 mt-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>State</mat-label>
+                  <mat-select formControlName="state" placeholder="Please select state">
+                    <mat-option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</mat-option>
+                    <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
+                    <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                    <mat-option value="Assam">Assam</mat-option>
+                    <mat-option value="Bihar">Bihar</mat-option>
+                    <mat-option value="Chandigarh">Chandigarh</mat-option>
+                    <mat-option value="Chhattisgarh">Chhattisgarh</mat-option>
+                    <mat-option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</mat-option>
+                    <mat-option value="Delhi">Delhi</mat-option>
+                    <mat-option value="Goa">Goa</mat-option>
+                    <mat-option value="Gujarat">Gujarat</mat-option>
+                    <mat-option value="Haryana">Haryana</mat-option>
+                    <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
+                    <mat-option value="Jammu and Kashmir">Jammu and Kashmir</mat-option>
+                    <mat-option value="Jharkhand">Jharkhand</mat-option>
+                    <mat-option value="Karnataka">Karnataka</mat-option>
+                    <mat-option value="Kerala">Kerala</mat-option>
+                    <mat-option value="Ladakh">Ladakh</mat-option>
+                    <mat-option value="Lakshadweep">Lakshadweep</mat-option>
+                    <mat-option value="Madhya Pradesh">Madhya Pradesh</mat-option>
+                    <mat-option value="Maharashtra">Maharashtra</mat-option>
+                    <mat-option value="Manipur">Manipur</mat-option>
+                    <mat-option value="Meghalaya">Meghalaya</mat-option>
+                    <mat-option value="Mizoram">Mizoram</mat-option>
+                    <mat-option value="Nagaland">Nagaland</mat-option>
+                    <mat-option value="Odisha">Odisha</mat-option>
+                    <mat-option value="Puducherry">Puducherry</mat-option>
+                    <mat-option value="Punjab">Punjab</mat-option>
+                    <mat-option value="Rajasthan">Rajasthan</mat-option>
+                    <mat-option value="Sikkim">Sikkim</mat-option>
+                    <mat-option value="Tamil Nadu">Tamil Nadu</mat-option>
+                    <mat-option value="Telangana">Telangana</mat-option>
+                    <mat-option value="Tripura">Tripura</mat-option>
+                    <mat-option value="Uttar Pradesh">Uttar Pradesh</mat-option>
+                    <mat-option value="Uttarakhand">Uttarakhand</mat-option>
+                    <mat-option value="West Bengal">West Bengal</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6 mt-3">
+                  <mat-form-field class="example-full-width" >
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="Please enter city" formControlName="city">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 mt-3">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Pincode</mat-label>
+                    <input matInput placeholder="Please enter Pincode" formControlName="pincode">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 mt-3">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Phone</mat-label>
+                  <input matInput placeholder="please enter phone No." formControlName="mobile_number">
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6 mt-3">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Please enter email" formControlName="email">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Co-Application Details -->
+            <div class="Co-Application-details mt-2">
+              <h4 class="clr-green mt-3">Nominee-Details</h4>
+              <div class="row">
+                <div class="form-group col-md-4 mt-3">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Nominee Name</mat-label>
+                    <input matInput placeholder="Please enter nominee name" formControlName="nominee_name">
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-4 mt-3">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Relation</mat-label>
+                    <input matInput placeholder="Please enter relation with nominee" formControlName="relation">
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-4 mt-3">
+                  <mat-form-field appearance="fill" (click)="picker1.open()">
+                    <mat-label>DOB:</mat-label >
+                    <input (keypress)="false" matInput [matDatepicker]="picker1" formControlName="co_applicant_dob" placeholer="Please select DOB">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Details -->
+            <div class="Payment-details mt-2">
+              <h4 class="clr-green mt-3">Payment Details</h4>
+              <div class="row">
+                <div class="form-group col-md-6 mt-3">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Bank Name</mat-label>
+                    <input matInput placeholder="Please enter bank name" formControlName="bank_name">
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6 mt-3">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Branch Name</mat-label>
+                    <input matInput placeholder="Please enter branch name" formControlName="branch_name">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6 mt-3">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Account Number</mat-label>
+                    <input matInput placeholder="Please enter account number" formControlName="account_number">
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6 mt-3">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>IFSC Code</mat-label>
+                    <input matInput placeholder="Please enter IFSC Code" formControlName="ifsc_code">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6 mt-3">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>PAN Number</mat-label>
+                    <input matInput placeholder="Please enter PAN number" formControlName="pan_number">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!-- Login Details -->
+            <div class="Login-details mt-2">
+              <h4 class="clr-green mt-3">Login Detail</h4>
+              <div class="row">
+                <div class="form-group mt-3 my-pass">
+                  <!-- <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Enter Passowrd" formControlName="password">
+                  </mat-form-field> -->
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input [type]="hide ? 'password' : 'text'"  matInput placeholder="Enter Password" formControlName="password" type="password">
+                    <button 
+                    mat-icon-button 
+                    type="button" 
+                    (click)="togglePasswordVisibility()">
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                  </button>
+                  </mat-form-field>
+                  <span class="danger" *ngIf="registrationForm.get('password')?.hasError('passwordInvalid')">
+                    Password must be between 8 and 15 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-6 mt-3">
+                <button type="submit" mat-raised-button class="saveButton"
+                  (click)="saveUserDetails(registrationForm)">Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

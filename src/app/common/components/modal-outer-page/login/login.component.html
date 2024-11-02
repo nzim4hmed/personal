@@ -1,0 +1,84 @@
+<!-- <div class="modal-dialog"> -->
+<div class="">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h1>Login</h1>
+
+
+			<button type="button" class="closeBtn" mat-icon-button [mat-dialog-close]="false">
+				<mat-icon class="close-icon">close</mat-icon>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="login-popup">
+				<div class="login-img">
+					<img src="assets/images/images/login.jpg" alt="">
+				</div>
+				<div class="login-form">
+					<form [formGroup]="loginForm">
+						<div class="form-field">
+							<label for="" class="form-label">Sponor ID</label>
+							<mat-form-field class="example-full-width">
+								<mat-label>Sponsor ID</mat-label>
+								<input matInput placeholder="Enter your sponsor Id" formControlName="sponsor_id"
+									style="text-transform: uppercase;">
+							</mat-form-field>
+							<div *ngIf="loginForm.get('sponsor_id')?.touched">
+								<div class="text-danger" *ngIf="loginForm.get('sponsor_id')?.errors?.['sponsor_id']">
+									<i class="bi bi-exclamation-circle"></i> Enter a valid sponsor ID
+								</div>
+							</div>
+						</div>
+						<div class="form-field my-pass" >
+							<label for="" class="form-label">Password</label>
+							<mat-form-field class="example-full-width">
+								<mat-label>Password</mat-label>
+								<!-- <input type="password" matInput placeholder="Password" formControlName="password"> -->
+								<input [type]="hide ? 'password' : 'text'" matInput placeholder="Enter your password"
+									formControlName="password" type="password">
+
+								<button mat-icon-button type="button" (click)="togglePasswordVisibility()">
+									<mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+								</button>
+
+							</mat-form-field>
+						</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<div class="hb-remember-wrapper">
+							<div class="hb-rememberMe">
+								<label class="hb-checkbox">
+									<input type="checkbox" name="rememberme" checked="">
+									<span></span>
+									Keeep me signed in
+								</label>
+							</div>
+							<div class="hb-forgot-link">
+								<a href="javascript:void(0);">Forgot Password?</a>
+							</div>
+						</div>
+						<div class="loginBtn">
+							<a href="javascript:void(0);" class="loginBtn" (click)="login(loginForm)">Login</a>
+						</div>
+						<div class="no-account">
+							<p>Don't have an account? <a href="javascript:void(0);" routerLink="registration">Sign
+									Up</a></p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

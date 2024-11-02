@@ -1,0 +1,240 @@
+<div class="container-md">
+    <div class="row flex-column-reverse mb-5 mb-md-0 flex-md-row" style="background-color: rgb(245, 245, 245);">
+        <div class="col-lg-7 p-0 px-xs-2 px-md-4 pb-4">
+           
+            <form style="max-width: none;" [formGroup]="shippingform">
+                <div class="bg-white m-2 p-3 shadow-sm rounded">
+                    <div>
+                        <h5 class="mb-2 font-14" style="font-weight: 600;">Contact Information </h5>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="col-md-6 col-12 mt-3">
+                            <div class="">
+                                <div class="form-label-group"><input type="text" formControlName="name"  readonly  class="form-control input-sm floating "
+                                        placeholder="Full Name" name="name" id="name">
+                                    <div class="invalid-feedback mt-0"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mt-3">
+                            <div class="">
+                                <div class="form-label-group"><input type="text" formControlName="sponsor_id" readonly   class="form-control input-sm floating "
+                                        placeholder="Sponsor ID" name="sponsor_id" id="sponsor_id">
+                                    <div class="invalid-feedback mt-0"></div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                    <!-- <div class="row d-flex mt-3"> -->
+                        <!-- <div class="col-md-6 col-12 mt-3">
+                            <div class="">
+                                <div class="form-label-group"><input type="tel" formControlName="mobile_number" readonly  class="form-control input-sm floating "
+                                        placeholder="Mobile Number" name="mobile_number" maxlength="10" id="mobile_number">
+                                    <div class="invalid-feedback mt-0"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mt-3">
+                            <div class="">
+                                <div class="form-label-group"><input type="text"  formControlName="email" readonly  class="form-control input-sm floating "
+                                        placeholder="Email" name="email" id="email">
+                                    <div class="invalid-feedback mt-0"></div>
+                                </div>
+                            </div>
+                        </div> -->
+                 
+                    </div>
+                    <div>
+                        <h5 class="mt-3 mb-2 font-14" style="font-weight: 600;">Shipping Address</h5>
+                        <div class="row">
+                            <div class="col-md-6 col-12 mt-3">
+                                <div class="form-label-group"><input type="text" formControlName="pincode"
+                                        class="form-control input-sm floating " placeholder="Pincode"
+                                        name="pincode" maxlength="6" id="pincode">
+                                       
+                                </div>
+                                <div *ngIf="shippingform.get('pincode')?.touched">
+                                    <div class="text-danger font-13 mt-0" style="font-size: 13px;" *ngIf="shippingform.get('pincode')?.errors?.['required']">Pincode is required </div>
+                                </div>
+                               
+                            </div>
+                            <div class="col-md-6 col-12 mt-3">
+                                <div class="form-label-group"><input type="text" formControlName="city"
+                                        class="form-control input-sm floating " placeholder="City" name="city"
+                                        id="city">
+                                       
+                                   
+                                </div>
+                                <div *ngIf="shippingform.get('city')?.touched">
+                                    <div class="text-danger font-13 mt-0" style="font-size: 13px;" *ngIf="shippingform.get('city')?.errors?.['required']">city is required </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12 mt-3">
+                                <div class="form-label-group"><select id="states" formControlName="state"
+                                        class="form-control text-capitalize" name="states">
+                                        <option value="select state">select state</option>
+                                        <option value="andhra pradesh">andhra pradesh</option>
+                                        <option value="arunachal pradesh">arunachal pradesh</option>
+                                        <option value="assam">assam</option>
+                                        <option value="bihar">bihar</option>
+                                        <option value="chandigarh">chandigarh</option>
+                                        <option value="chattisgarh">chattisgarh</option>
+                                        <option value="dadra and nagar haveli">dadra and nagar haveli</option>
+                                        <option value="daman and diu">daman and diu</option>
+                                        <option value="delhi">delhi</option>
+                                        <option value="goa">goa</option>
+                                        <option value="gujarat">gujarat</option>
+                                        <option value="haryana">haryana</option>
+                                        <option value="himachal pradesh">himachal pradesh</option>
+                                        <option value="jammu and kashmir">jammu and kashmir</option>
+                                        <option value="jharkhand">jharkhand</option>
+                                        <option value="karnataka">karnataka</option>
+                                        <option value="kerala">kerala</option>
+                                        <option value="ladakh">ladakh</option>
+                                        <option value="lakshadweep">lakshadweep</option>
+                                        <option value="madhya pradesh">madhya pradesh</option>
+                                        <option value="maharashtra">maharashtra</option>
+                                        <option value="manipur">manipur</option>
+                                        <option value="meghalaya">meghalaya</option>
+                                        <option value="mizoram">mizoram</option>
+                                        <option value="nagaland">nagaland</option>
+                                        <option value="odisha">odisha</option>
+                                        <option value="puducherry">puducherry</option>
+                                        <option value="punjab">punjab</option>
+                                        <option value="rajasthan">rajasthan</option>
+                                        <option value="sikkim">sikkim</option>
+                                        <option value="tamil nadu">tamil nadu</option>
+                                        <option value="telangana">telangana</option>
+                                        <option value="tripura">tripura</option>
+                                        <option value="uttar pradesh">uttar pradesh</option>
+                                        <option value="uttarakhand">uttarakhand</option>
+                                        <option value="west bengal">west bengal</option>
+                                    </select><label class="form-label-select"></label>
+                                    <div *ngIf="shippingform.get('state')?.touched">
+                                        <div class="text-danger font-13 mt-0" style="font-size: 13px;" *ngIf="shippingform.get('state')?.errors?.['required']">State is required </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12 mt-3">
+                                <div class="form-label-group"><input type="text" class="form-control input-sm floating "
+                                        placeholder="Country" name="country" disabled="" id="country" value="India">
+                                        
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-label-group"><input type="text" formControlName="address" class="form-control input-sm floating "
+                                        placeholder="Address (House No, Building, Street, Area)*" name="address1"
+                                        id="address1">
+                                        <div *ngIf="shippingform.get('address')?.touched">
+                                            <div class="text-danger font-13 mt-0" style="font-size: 13px;" *ngIf="shippingform.get('address')?.errors?.['required']">Address is required </div>
+                                        </div>
+                             
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-label-group"><input type="text" formControlName="landmark" class="form-control input-sm floating "
+                                        placeholder="Landmark (Optional)" name="address2" id="address2">
+                                    <div class="invalid-feedback mt-0"></div>
+                                </div>
+                            </div>
+                        </div>
+                     
+
+                    </div>
+                </div>
+        
+                <div class="submitBtn mt-3 d-flex justify-content-center"><button type="submit" [disabled]="allCheckoutProducts.length === 0" (click)="saveUserDetails(shippingform)" class="text-white btn btn-block mx-2 py-2 w-100" style="background: #f04e23;">CONFIRM ADDRESS</button></div>
+            </form>
+
+        </div>
+        <div class="col-lg-5 p-0 orderSummaryWrapper">
+            <div>
+                <div class="d-flex justify-content-between align-items-center d-none d-md-none p-3">
+                    <div class="d-flex"><svg width="20" height="19" xmlns="http://www.w3.org/2000/svg"
+                            class="orderSummary_cartIcon__xJ8Bm">
+                            <path
+                                d="M17.178 13.088H5.453c-.454 0-.91-.364-.91-.818L3.727 1.818H0V0h4.544c.455 0 .91.364.91.818l.09 1.272h13.45c.274 0 .547.09.73.364.18.182.27.454.18.727l-1.817 9.18c-.09.455-.455.728-.91.728zM6.27 11.27h10.09l1.454-7.362H5.634l.637 7.362zm.092 7.715c1.004 0 1.818-.813 1.818-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817zm9.18 0c1.004 0 1.817-.813 1.817-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817z">
+                            </path>
+                        </svg><span class="orderSummary_summaryText__Tlzs3 ml-2" style="color: black;">Show Order
+                            Summary</span><svg width="11" height="6" xmlns="http://www.w3.org/2000/svg"
+                            class="orderSummary_chevronDown__vUvvD" fill="#000">
+                            <path
+                                d="M.504 1.813l4.358 3.845.496.438.496-.438 4.642-4.096L9.504.438 4.862 4.534h.992L1.496.69.504 1.812z">
+                            </path>
+                        </svg></div>
+                    <div class="orderSummary_price__NLTl8" style="font-size: 14px;"><del
+                            style="font-size: 14px; margin-right: 4px; color: rgb(126, 126, 126);">₹8,495</del><strong
+                            style="font-weight: 600;">₹7,495</strong></div>
+                </div>
+                <div class="">
+                    <div class="bg-white m-2 p-3 shadow-sm rounded orderSummary_odderDropDownBox__rG3xL">
+                        <div class="orderSummary_card_height__gQFNa overflow-auto"*ngFor=" let item of allCheckoutProducts" >
+                            <div class="cart-item bg-white rounded-sm mb-16 border ">
+                                <div class="d-flex" style="column-gap: 8px;">
+                                    <div class="oziva-item-img"><img style="width: 100px;"
+                                            [src]="previewpath + item.product.product_image"
+                                            alt="Protein &amp; Herbs for Lean Muscles &amp; Stamina, Men - Cafe mocha, 500 g"
+                                            class="rounded cart-thumbnail"></div>
+                                    <div class="cart-item-dtl">
+                                        <h3 class="product-name product-name-elipsis ">{{item.product.product_name}} &amp; {{item.product.description}}</h3>
+                                        <!-- <ul class="orderSummary_productChipList__qaxz9">
+                                            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="10.086"
+                                                        height="7.489" viewBox="0 0 10.086 7.489">
+                                                        <path id="np_tick_1142447_000000"
+                                                            d="M18.843,34.169l-3.312-3.313.716-.716,2.6,2.6L24.9,26.68l.716.716Z"
+                                                            transform="translate(-15.531 -26.68)" fill="#6bbd58"></path>
+                                                    </svg></span>Muscle Building</li>
+                                            <li><span><svg xmlns="http://www.w3.org/2000/svg" width="10.086"
+                                                        height="7.489" viewBox="0 0 10.086 7.489">
+                                                        <path id="np_tick_1142447_000000"
+                                                            d="M18.843,34.169l-3.312-3.313.716-.716,2.6,2.6L24.9,26.68l.716.716Z"
+                                                            transform="translate(-15.531 -26.68)" fill="#6bbd58"></path>
+                                                    </svg></span>Stamina Boost</li>
+                                        </ul> -->
+                                        <div class="orderSummary_QuantityCard__k7RHg">Qty: {{item.quantity}}</div>
+                                        <div class="orderSummary_productPriceDetails__9Seg7"><span
+                                                class="orderSummary_priceMRP__Bfq2q">MRP:</span><del
+                                                class="orderSummary_priceMRP__Bfq2q">₹{{item.product.mrp}}</del><span
+                                                class="orderSummary_actualPrice__ewb2E">₹{{item.product.mrp}}</span></div>
+                                        <div class="orderSummary_productPriceDetails__9Seg7"><span
+                                                class="orderSummary_totalPriceOff__Y7wXC">You save: ₹1,899</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="orderSummary_odderDropDownBoxInner__Dxi6Z">
+                            <h5>Price Details</h5>
+                            <hr class="m-1">
+                            <ul class="list-group list-group-flush" [hidden]="allCheckoutProducts.length === 0">
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center border-0 p-1 ">
+                                    Total MRP<span style="font-family: roboto; color: rgb(0, 0, 0);">₹8,495</span></li>
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center border-0 p-1 ">
+                                    Discount on MRP<span style="font-family: roboto;">-₹1,000</span></li>
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center border-0 p-1">
+                                    <div class="d-flex align-items-center" style="font-weight: 600;"><span
+                                            style="color: rgb(0, 110, 90);">1 Month Consultation </span></div><span
+                                        style="color: rgb(0, 110, 90); font-family: roboto; font-weight: 600;"><s>₹1,499</s>
+                                        FREE</span>
+                                </li>
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center border-0 p-1">
+                                    <span class="orderSummary_tooltipInfo__oE06C">Delivery Charges</span><span><s
+                                            style="color: rgb(126, 126, 126);">₹99</s> FREE</span></li>
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center border-top p-1">
+                                    <b class="orderSummary_finalPriceTile__RM_gO">Total</b><span><strong
+                                            class="total-prize">₹{{grandTotal}}</strong></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="submitBtn mt-3 d-flex justify-content-center"><button type="submit" [disabled]="allCheckoutProducts.length === 0" (click)="orderPaced(shippingform)" class="text-white btn btn-block mx-2 py-2 w-100" style="background: #870000;">Place Order</button></div>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

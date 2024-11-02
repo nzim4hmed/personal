@@ -1,0 +1,88 @@
+<div class="cart-container">
+	<div class="cart-header">
+		<h1>Shopping Cart</h1>
+	
+	</div>
+	<div class="cart-content" [formGroup]="cartForm">
+		<div class="cart-items">
+			<table class="cart-table">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Total</th>
+						<th>Remove</th>
+					</tr>
+				</thead>
+				<tbody formArrayName="addtocart">
+					<tr *ngIf="productCartDetailsFormArray.controls.length === 0">
+						<td colspan="6" style="text-align: center;">No data found</td>
+					  </tr>
+					<tr *ngFor="let cart of productCartDetailsFormArray.controls; let i=index"
+					[formGroupName]="i">
+						<td>
+							<img [src]="prefixviewPath + cart.value.product_image" class="product-image" alt="Keemun Tea">
+						</td>
+						<td>
+							<a href="javascript:void(0);" (click)="navigateToShop()">{{cart.value.product_name}}</a>
+						</td>
+						<td>
+							₹{{cart.value.mrp}}
+						</td>
+						<!-- <td>
+							<input type="number" min="1" class="quantity-input" formControlName="quantity_of_product" value="1">
+						</td> -->
+						<td>
+							<div class="quantity-controls">
+								<button type="button" (click)="decreaseQuantity(i)" [disabled]="getQuantity(i) <= 1" class="quantity-button">-</button>
+								<input type="number" class="quantity-input" [formControlName]="'quantity_of_product'" readonly  min="1">
+								<button type="button" (click)="increaseQuantity(i)" [disabled]="getQuantity(i) >= cart.value.stock_qty" class="quantity-button">+</button>
+							  </div>
+						  </td>
+						  
+						<td>
+							₹{{cart.value.total_price}}
+						</td>
+						<td>
+							<button class="remove-button" (click)="deleteCart(cart.value.id)">Remove</button>
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+		<div class="row">
+<div class="col-md-6">
+
+</div>
+
+			<div class="cart-summary col-md-6">
+				<div class="coupon-code">
+					<h3>Enter Coupon Code</h3>
+					<input type="text" class="coupon-input" placeholder="Coupon code">
+					<button class="apply-coupon">Apply</button>
+				</div>
+				<div class="cart-totals">
+					<h2>Cart Totals</h2>
+					<table class="totals-table">
+						<tr>
+							<th>Subtotal</th>
+							<td>₹{{grandTotal}}</td>
+						</tr>
+						<tr>
+							<th>Discounts</th>
+							<td>-₹ 0.00</td>
+						</tr>
+						<tr>
+							<th>Total</th>
+							<td>₹{{grandTotal}}</td>
+						</tr>
+					</table>
+					<button class="checkout-button" (click)="placeOrder()" [disabled]="productCartDetailsFormArray.controls.length === 0">Checkout</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

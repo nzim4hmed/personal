@@ -1,0 +1,328 @@
+
+  
+  <!-- ============================================================== -->
+  <!-- Image Card row-->
+  <!-- ============================================================== -->
+  <div class="row">
+    <!-- Card column -->
+    <div class="col-lg-3 col-sm-12">
+      <mat-card class="oh text-center little-profile">
+        <img mat-card-image src="../../../../../assets/images/admin-images/background/profile-bg.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <div class="pro-img">
+                <img src="../../../../../assets/images/admin-images/users/4.jpg" width="100" alt="user" class="img-circle">
+            </div>
+            <h3 class="m-b-0">{{userDetails.name}}</h3>
+            <!-- <h6 class="m-t-0 ">Web Designer &amp; Developer</h6> -->
+            <mat-card-actions class="db">
+                <button mat-raised-button color="warn">Follow</button>
+            </mat-card-actions>
+            <div class="row m-t-30">
+                <div class="col-4">
+                    <h3 class="m-0 font-light">1099</h3>
+                    <small>Articles</small>
+                </div>
+                <div class="col-4">
+                    <h3 class="m-0 font-light">23,469</h3>
+                    <small>Followers</small>
+                </div>
+                <div class="col-4">
+                    <h3 class="m-0 font-light">6035</h3>
+                    <small>Likes</small>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+      <!-- <app-contact1></app-contact1> -->
+    </div>
+    <!-- Card column -->
+    <!-- Card column -->
+    <div class="col-lg-9 col-sm-12">
+      <mat-card>
+        <mat-tab-group mat-stretch-tabs="false">
+            <!-- Tab 1 -->
+            <!-- <mat-tab label="Activity">
+                <mat-card-content>
+    
+    
+                    <div class="d-flex no-blcok" *ngFor='let activity of activityData'>
+                        <div class="m-r-20">
+                            <img class="img-circle" width="50" [src]=activity.image alt="Image"> </div>
+                        <div class="p-b-20 b-b m-b-30">
+                            <h4 class="m-0">{{activity.name}}
+                                <small class="text-muted">({{activity.commentTime}})</small>
+                            </h4>
+                            <p class="text-muted">{{activity.comment}}</p>
+    
+                            <div class="row" *ngIf="activity.bottomImage !==''">
+                                <div class="col-md-3">
+                                    <img class="img-responsive rounded" [src]=activity.bottomImage  alt="Image">
+                                </div>
+                            </div>
+                            
+    
+                            <button  >Check Now</button>
+    
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-tab> -->
+            <!-- End Tab 1 -->
+            <!-- Tab 2 -->
+            <mat-tab label="Update Profile">
+                <mat-card-content>
+                    <!-- <mat-card-title>Form Basic Layouts</mat-card-title> -->
+                    <!-- ============================================================== -->
+                    <!-- column -->
+                    <!-- ============================================================== -->
+                    <form class="basic-form">
+                        <div class="row">
+                            <div class="registration-form" >
+                              <!-- <h2 class="d-flex justify-content-center">Registration Form</h2> -->
+                              <form [formGroup]="updateProfileForm">
+                                <div class="sponsor-information">
+                                  <!-- <h4 class="clr-green">Sponsor Information</h4> -->
+                                  <div class="row">
+                                    <div class="form-group col-md-6 mt-2">
+                                      <!-- <label for="sponsorId">Sponsor ID</label> -->
+                                      <mat-form-field class="example-full-width">
+                                        <mat-label>Sponsor ID</mat-label>
+                                        <input type="text" matInput placeholder="Sponsor ID" #sponsor_id formControlName="sponsor_id" >
+                                      </mat-form-field>
+                                    </div>
+                                    <!-- <div class="form-group col-md-6 mt-2">
+                                   
+                                      <mat-form-field class="example-full-width">
+                                        <mat-label>Sponsor Name</mat-label>
+                                        <input type="text" matInput placeholder="Sponsor Name" formControlName="sponsor_name" readonly>
+                                      </mat-form-field>
+                                    </div> -->
+                                  </div>
+                                </div>
+                      
+                                <div class="personal-details">
+                                  <h4 class="clr-green mt-3">Personal Details</h4>
+                                  <div class="row">
+                                    <div class="form-group col-md-6 mt-2">
+                                      <mat-form-field class="example-full-width">
+                                        <mat-label>Full Name</mat-label>
+                                        <input matInput placeholder="Name" formControlName="name">
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-md-6 mt-2">
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Choose a date</mat-label>
+                                        <input matInput [matDatepicker]="picker" formControlName="dob">
+                                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="form-group col-md-6 mt-3">
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Gender</mat-label>
+                                        <mat-select formControlName="gender">
+                                          <mat-option value="Male">Male</mat-option>
+                                          <mat-option value="Female">Female</mat-option>
+                                          <mat-option value="Other">Other</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-md-6 mt-3">
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>Marital Status</mat-label>
+                                        <mat-select formControlName="marital_status">
+                                          <mat-option value="Single">Single</mat-option>
+                                          <mat-option value="Married">Married</mat-option>
+                                          <mat-option value="Divorced">Divorced</mat-option>
+                                          <mat-option value="Widowed">Widowed</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="form-group col-md-6 mt-3">
+                                      <mat-form-field class="example-full-width">
+                                        <mat-label>Address</mat-label>
+                                        <textarea matInput placeholder="Ex. It makes me feel..." formControlName="address"></textarea>
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-md-6 mt-3">
+                                      <mat-form-field appearance="fill">
+                                        <mat-label>State</mat-label>
+                                        <mat-select formControlName="state">
+                                          <mat-option value="AN">Andaman and Nicobar Islands</mat-option>
+                                          <mat-option value="AP">Andhra Pradesh</mat-option>
+                                          <mat-option value="AR">Arunachal Pradesh</mat-option>
+                                          <mat-option value="AS">Assam</mat-option>
+                                          <mat-option value="BR">Bihar</mat-option>
+                                          <mat-option value="CH">Chandigarh</mat-option>
+                                          <mat-option value="CT">Chhattisgarh</mat-option>
+                                          <mat-option value="DN">Dadra and Nagar Haveli</mat-option>
+                                          <mat-option value="DD">Daman and Diu</mat-option>
+                                          <mat-option value="DL">Delhi</mat-option>
+                                          <mat-option value="GA">Goa</mat-option>
+                                          <mat-option value="GJ">Gujarat</mat-option>
+                                          <mat-option value="HR">Haryana</mat-option>
+                                          <mat-option value="HP">Himachal Pradesh</mat-option>
+                                          <mat-option value="JK">Jammu and Kashmir</mat-option>
+                                          <mat-option value="JH">Jharkhand</mat-option>
+                                          <mat-option value="KA">Karnataka</mat-option>
+                                          <mat-option value="KL">Kerala</mat-option>
+                                          <mat-option value="LA">Ladakh</mat-option>
+                                          <mat-option value="LD">Lakshadweep</mat-option>
+                                          <mat-option value="MP">Madhya Pradesh</mat-option>
+                                          <mat-option value="MH">Maharashtra</mat-option>
+                                          <mat-option value="MN">Manipur</mat-option>
+                                          <mat-option value="ML">Meghalaya</mat-option>
+                                          <mat-option value="MZ">Mizoram</mat-option>
+                                          <mat-option value="NL">Nagaland</mat-option>
+                                          <mat-option value="OR">Odisha</mat-option>
+                                          <mat-option value="PY">Puducherry</mat-option>
+                                          <mat-option value="PB">Punjab</mat-option>
+                                          <mat-option value="RJ">Rajasthan</mat-option>
+                                          <mat-option value="SK">Sikkim</mat-option>
+                                          <mat-option value="TN">Tamil Nadu</mat-option>
+                                          <mat-option value="TG">Telangana</mat-option>
+                                          <mat-option value="TR">Tripura</mat-option>
+                                          <mat-option value="UP">Uttar Pradesh</mat-option>
+                                          <mat-option value="UT">Uttarakhand</mat-option>
+                                          <mat-option value="WB">West Bengal</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                      
+                                    </div>
+                                  </div>
+                      
+                      
+                                  <div class="form-group">
+                                    <div class="row">
+                                      <div class="col-md-6 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>City</mat-label>
+                                          <input matInput placeholder="City" formControlName="city">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="col-md-6 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>Pincode</mat-label>
+                                          <input matInput placeholder="Pincode" formControlName="pincode">
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="form-group col-md-6 mt-3">
+                                      <mat-form-field class="example-full-width">
+                                        <mat-label>Phone</mat-label>
+                                        <input matInput placeholder="Phone" formControlName="mobile_number">
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-md-6 mt-3">
+                                      <mat-form-field class="example-full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput placeholder="Email" formControlName="email">
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                               
+                                  <!-- Co-Application Details -->
+                                  <div class="Co-Application-details mt-2">
+                                    <h4 class="clr-green mt-3">Nominee-Details</h4>
+                                    <div class="row">
+                                      <div class="form-group col-md-4 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>Nominee Name</mat-label>
+                                          <input matInput placeholder="Nominee Name" formControlName="nominee_name">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="form-group col-md-4 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>Relation</mat-label>
+                                          <input matInput placeholder="Relation with Nominee" formControlName="relation">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="form-group col-md-4 mt-3">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label>DOB:</mat-label>
+                                          <input matInput [matDatepicker]="picker1" formControlName="co_applicant_dob">
+                                          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                          <mat-datepicker #picker1></mat-datepicker>
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                  </div>
+                      
+                                  <!-- Payment Details -->
+                                  <div class="Payment-details mt-2">
+                                    <h4 class="clr-green mt-3">Payment Details</h4>
+                                    <div class="row">
+                                      <div class="form-group col-md-6 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>Bank Name</mat-label>
+                                          <input matInput placeholder="Bank Name" formControlName="bank_name">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="form-group col-md-6 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>Branch Name</mat-label>
+                                          <input matInput placeholder="Branch Name" formControlName="branch_name">
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="form-group col-md-6 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>Account Number</mat-label>
+                                          <input matInput placeholder="Account Number" formControlName="account_number">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="form-group col-md-6 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>IFSC Code</mat-label>
+                                          <input matInput placeholder="IFSC Code" formControlName="ifsc_code">
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="form-group col-md-6 mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>PAN Number</mat-label>
+                                          <input matInput placeholder="Account Number" formControlName="pan_number">
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- Login Details -->
+                                  <!-- <div class="Login-details mt-2">
+                                    <h4 class="clr-green mt-3">Login Detail</h4>
+                                    <div class="row">
+                                      <div class="form-group mt-3">
+                                        <mat-form-field class="example-full-width">
+                                          <mat-label>Password</mat-label>
+                                          <input matInput placeholder="Enter Passowrd" formControlName="password">
+                                        </mat-form-field>
+                                      </div>
+                      
+                                    </div>
+                      
+                                  </div> -->
+                                  <div class="row">
+                                    <div class="col-md-6 mt-3">
+                                      <button type="submit" mat-raised-button class="saveButton"
+                                       (click)="saveUserDetails(updateProfileForm)">Update Profile</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                      
+                            </div>
+                          </div>
+                    </form>
+                </mat-card-content>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+    </div>
+  </div>

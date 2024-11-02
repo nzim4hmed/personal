@@ -1,0 +1,23 @@
+<div class="w-100">
+  <div class="d-flex justify-content-between mb-2">
+    <h2>My Team</h2>
+    <div class="col-md-3 col-12 ">
+
+      <!-- <input  placeholder="Search by Sponsor ID" #sponsorID (change)="searchTree(sponsorID.value)"  /> -->
+      <input placeholder="Search by Sponsor ID" #sponsorID />
+
+    </div>
+  </div>
+  <hr class="hrcss">
+  <div class="container">
+    <p-organizationChart [value]="modifiedData" selectionMode="multiple" [(selection)]="selectedNodes">
+      <ng-template let-node pTemplate="person">
+        <div class="p-2 text-center imagesize">
+          <img src="../../../../../assets/images/admin-images/user-icon-removebg-preview.png" style="margin-bottom: -10px !important;" class="mb-3 w-3rem h-3rem" />
+          <div class="text-capitalize" style="font-weight: 500 !important;">{{ node.name }}</div>
+          <div style="font-weight: 500 !important;">{{ node.sponsor_id }}</div>
+        </div>
+      </ng-template>
+    </p-organizationChart>
+  </div>
+</div>
