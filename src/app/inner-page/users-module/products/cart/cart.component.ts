@@ -7,6 +7,7 @@ import { ProductsService } from 'src/app/common/services/superAdminService/produ
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/common/services/common-service/authentication.service';
 import { AlertService } from 'src/app/common/services/common-service/alert.service';
+import { CartDataService } from 'src/app/common/services/superAdminService/cartdata.service';
 
 @Component({
   selector: 'app-cart',
@@ -35,6 +36,7 @@ export class CartComponent implements OnInit {
     private _fb: FormBuilder,
     private _authService: AuthenticationService,
     private _alert: AlertService,
+    private cartService: CartDataService,
   ) { }
   ngOnInit() {
     this.userDetails = this._authService.getLoginUserData();
@@ -63,7 +65,7 @@ export class CartComponent implements OnInit {
         this.productCartDetailsFormArray.clear()
         this.cartproduct = res.data.data;
 
-        this.cartproduct.forEach(product => {
+        this.cartproduct?.forEach(product => {
           this.productCartDetailsFormArray.push(this.createProductFormGroup(product));
         });
         this.updateTotalPrice();
@@ -232,6 +234,7 @@ export class CartComponent implements OnInit {
 
   updateTotalPrice() {
 
+
     const formGroup = this.productCartDetailsFormArray
     const formArray = this.cartForm.get('productCartDetailsFormArray') as FormArray;
     console.log(formArray);
@@ -241,6 +244,7 @@ export class CartComponent implements OnInit {
 
     // const totalPriceControl = formGroup.get('total_price');
     console.log(formGroup.value);
+    this.cartService.incrementCartCount();
 
   }
 

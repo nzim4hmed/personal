@@ -22,7 +22,7 @@ export class CartDataService {
 
   // You can use this method to increment the cart count by 1
   incrementCartCount() {
-    this.cartCount.next(this.cartCount.value + 1);
+    this.cartCount.next(this.cartCount.value );
   }
 
 

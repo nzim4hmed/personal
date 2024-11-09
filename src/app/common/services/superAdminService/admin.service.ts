@@ -26,6 +26,10 @@ export class ADminService {
         return this._http.get(`${environment.genXApiURL}admin/get-all-orders`)
       }
 
+    updateUserStatus(formData:any) {
+        return this._http.put(`${environment.genXApiURL}admin/update-user-status`, formData)
+      }
+
       
 
 

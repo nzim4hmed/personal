@@ -10,14 +10,39 @@
   </div>
   <hr class="hrcss">
   <div class="container">
-    <p-organizationChart [value]="modifiedData" selectionMode="multiple" [(selection)]="selectedNodes">
-      <ng-template let-node pTemplate="person">
-        <div class="p-2 text-center imagesize">
-          <img src="../../../../../assets/images/admin-images/user-icon-removebg-preview.png" style="margin-bottom: -10px !important;" class="mb-3 w-3rem h-3rem" />
-          <div class="text-capitalize" style="font-weight: 500 !important;">{{ node.name }}</div>
-          <div style="font-weight: 500 !important;">{{ node.sponsor_id }}</div>
-        </div>
-      </ng-template>
-    </p-organizationChart>
+    <div class="d-flex justify-content-end">
+      <div class="text-center">
+
+        <img src="../../../../../assets/images/admin-images/user-icon-removebg-preview.png" style="width: 72px;" class=" w-2rem h-3rem "
+          alt="" />
+        <h5>Active</h5>
+      </div>
+      <div class="text-center">
+
+        <img src="../../../../../assets/images/admin-images/redicon.png" class=" w-2rem h-3rem "
+        style="width: 72px;"  alt="" />
+        <h5>Inactive</h5>
+      </div>
+
+
+
+    </div>
+    <div>
+      <p-organizationChart [value]="modifiedData" selectionMode="multiple" [(selection)]="selectedNodes">
+        <ng-template let-node pTemplate="person">
+          <!-- {{node | json}} -->
+          <div class="p-2 text-center imagesize">
+            <img *ngIf="node.status == 'Active'"
+              src="../../../../../assets/images/admin-images/user-icon-removebg-preview.png"
+              style="margin-bottom: -10px !important;" class="mb-3 w-3rem h-3rem" />
+            <img *ngIf="node.status == 'Inactive'" src="../../../../../assets/images/admin-images/redicon.png"
+              style="margin-bottom: -10px !important;" class="mb-3 w-3rem h-3rem" />
+            <div class="text-capitalize" style="font-weight: 500 !important;">{{ node.name }}</div>
+            <div style="font-weight: 500 !important;">{{ node.sponsor_id }}</div>
+          </div>
+        </ng-template>
+      </p-organizationChart>
+    </div>
+
   </div>
 </div>

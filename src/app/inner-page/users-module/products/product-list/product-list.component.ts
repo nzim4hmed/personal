@@ -68,7 +68,7 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  navigateToCart(product:any) {
+  addToCart(product:any) {
     console.log(product);
     this.cartForm.patchValue({
       product_id: product.id,

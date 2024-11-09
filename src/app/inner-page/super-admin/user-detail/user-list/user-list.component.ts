@@ -9,6 +9,7 @@ import { ProductsService } from 'src/app/common/services/superAdminService/produ
 import { MatDialog } from '@angular/material/dialog';
 import { AlertService } from 'src/app/common/services/common-service/alert.service';
 import { MaterialModule } from 'src/app/material.module';
+import { ConfirmationModalComponent } from 'src/app/common/components/modal-inner-pages/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-user-list',
@@ -70,23 +71,23 @@ export class UserListComponent implements OnInit {
 
   }
 
-  // updateProduct(productDetail: any) {
-  //   const dialogRef = this._dialog.open(UpdateProductComponent, {
-  //     width: '750px',
-  //     maxHeight: '600px',
-  //     data: productDetail,
-  //     autoFocus: false,
-  //     panelClass: 'commonDialogBox',
-  //     disableClose: false
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       this.getuserTree()
-  //     }
-  //     console.log(`Dialog result: ${result}`);
-  //   });
+  updateStatus(productDetail: any) {
+    const dialogRef = this._dialog.open(ConfirmationModalComponent, {
+      maxWidth: "400px",
+      maxHeight: '600px',
+      data: productDetail,
+      autoFocus: false,
+      panelClass: 'commonDialogBox',
+      disableClose: false
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getuserTree()
+      }
+      console.log(`Dialog result: ${result}`);
+    });
 
-  // }
+  }
 
 
 

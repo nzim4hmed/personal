@@ -1,4 +1,5 @@
-<main class="container mt-5">
+<!-- <main class="container mt-5">
+    
     <div class="row">
       
         <div class="col-md-3 mb-4">
@@ -55,4 +56,32 @@
             </div>
         </div>
     </div>
-</main>
+</main> -->
+
+<div class="container-fluid d-flex justify-content-between">
+    <div class="three">
+      <h1>Admin Dashboard</h1>
+    </div>
+  <div>
+    <!-- <button mat-raised-button color="primary" *ngIf="userDetails.status === 'Active'" >
+      Active
+    </button>
+    <button mat-raised-button color="warn" *ngIf="userDetails.status === 'Inactive'">
+      Inactive
+    </button> --> 
+  </div>
+</div>
+
+
+
+<div class="dashboard-summary">
+  <div class="summary-card" *ngFor="let card of summaryCards" [ngStyle]="{'background-color': card.BgColor}">
+    <div class="card-icon" [ngStyle]="{'background-color': card.iconBgColor, 'color': card.iconColor}">
+      <mat-icon>{{ card.icon }}</mat-icon>
+    </div>
+    <div class="card-content">
+      <h4>{{ card.title }}</h4>
+      <p>{{ card.value }}</p>
+    </div>
+  </div>
+</div>

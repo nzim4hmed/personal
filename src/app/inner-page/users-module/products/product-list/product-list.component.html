@@ -221,7 +221,7 @@
 						<p *ngIf="product.stock_qty > 0" class="in-stock">In Stock</p>
 						<p *ngIf="product.stock_qty <=0" class="out-stock">Out of Stock</p>
 						<div class="d-flex justify-content-center">
-							<button  [disabled]="product.stock_qty <= 0" class="purchase-button mt-1" (click)="navigateToCart(product)">Add to
+							<button  [disabled]="product.stock_qty <= 0" class="purchase-button mt-1" (click)="addToCart(product)">Add to
 								Cart</button>
 						</div>
 					</div>

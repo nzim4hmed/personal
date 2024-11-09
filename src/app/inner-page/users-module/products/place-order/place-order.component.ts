@@ -24,8 +24,10 @@ export class PlaceOrderComponent implements OnInit {
   userDetails: any
   loginDetail: any
   completeaddress: any
-  allCheckoutProducts: Array<any>=[]
+  allCheckoutProducts: Array<any> = []
   grandTotal: any
+  checkout_id: number = 0
+  confirmaddressbtn: boolean = false
 
   previewpath = environment.fileUrl;
   constructor(
@@ -39,6 +41,7 @@ export class PlaceOrderComponent implements OnInit {
 
   }
   ngOnInit() {
+    console.log(this.checkout_id);
 
     this.userDetails = this._authService.getLoginUserData();
     console.log(this.userDetails);
@@ -57,6 +60,7 @@ export class PlaceOrderComponent implements OnInit {
 
 
           this.allCheckoutProducts = res.data.data;
+
 
 
           console.log(JSON.stringify(this.allCheckoutProducts) === '{}');
@@ -107,7 +111,7 @@ export class PlaceOrderComponent implements OnInit {
   createOrderObjectForOrderPlace() {
     return {
       user_id: this.userDetails.id,
-      checkout_ids: this.allCheckoutProducts.map((product: any) => product.id),
+      checkout_id: this.checkout_id,
     };
   }
 
@@ -131,10 +135,13 @@ export class PlaceOrderComponent implements OnInit {
       this._productService.checkout(this.createOrderObject()).subscribe({
         next: (res: any) => {
           console.log(res);
-          
+
           if (res.data != '') {
             // this._alert.showConfirmationforReg('Welcome to the ALWAYS GEENLIVE Family!', res.results.data.sponsor_id, res.results.data.password, 'Confirm');
             this._alert.swalPopSuccess('Address Updated Successfully');
+            console.log(res.data);
+            this.checkout_id = res?.data?.id
+            this.confirmaddressbtn = true
             this.shippingform.disable();
             // this._router.navigate(['home']);
             // this.loginPopUp();b
@@ -153,11 +160,13 @@ export class PlaceOrderComponent implements OnInit {
 
     this._productService.orderPlaced(this.createOrderObjectForOrderPlace()).pipe(takeUntil(this.unsubscribe)).subscribe({
       next: (res: any) => {
+        console.log(res);
 
-        if (res.data != null && res.data == true) {
+        console.log(res.data.length);
+        if (res.status === true) {
           this._alert.swalPopSuccess('Order placed successfully');
           this._router.navigate(['User/product/order-list']);
-        }
+      }
       }
     })
 

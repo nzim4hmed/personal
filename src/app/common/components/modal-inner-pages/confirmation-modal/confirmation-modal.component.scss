@@ -1,0 +1,91 @@
+// .closeBtn{
+//     justify-content: flex-end;
+//     display: flex;
+// }
+h2{
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #000000 !important;
+}
+h4{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #000000 !important;
+}
+
+
+.website-add-btn {
+    height: 44px;
+    padding: 8px 17px;
+    font-size: 13px;
+    color: #217346;
+    border: 1px solid #217346;
+    border-radius: 5px;
+    background-color: transparent;
+    font-weight: 700;
+    &:hover {
+      transition: all 0.3s ease;
+      background-color: #217346;
+      color: white;
+    }
+  }
+  
+  .website-delete-btn {
+    height: 44px;
+    padding: 8px 17px;
+    font-size: 13px;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    background-color: transparent;
+    font-weight: 700;
+    &:hover {
+      transition: all 0.3s ease;
+      background-color: #ff0000;
+      color: white;
+    }
+  }
+  
+  .website-submit-btn {
+    // min-height: 40px;
+    height: 44px;
+    padding: 10px 24px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #3b454d;
+    border-radius: 5px;
+  
+    background-color: #3b454d !important;
+    color: white !important;
+  
+    &:hover {
+      transition: all 0.3s ease;
+      background-color: #376B78 !important;
+      color: #ffffff !important;
+      border: 1px solid #376B78 !important;
+    }
+  }
+
+  .green-success-btn {
+    font-size: 12px;
+    background-color: #007300 !important;
+    color: #ffffff !important;
+    border: 1px solid #007300 !important;
+    border-radius: 3px !important;
+  }
+  .red-abort-btn {
+    font-size: 12px;
+    background-color: #dd3333 !important;
+    color: #ffffff !important;
+    border: 1px solid #dd3333 !important;
+    border-radius: 3px !important;
+  }
+  .blue-countinue-btn {
+    font-size: 12px;
+    background-color: #3085d6 !important;
+    color: #ffffff !important;
+    border: 1px solid #3085d6 !important;
+    border-radius: 3px !important;
+  }
