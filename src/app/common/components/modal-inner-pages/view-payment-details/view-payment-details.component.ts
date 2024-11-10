@@ -50,8 +50,11 @@ export class ViewPaymentDetailsComponent {
     this.PaymentUpload = this.addProductform(this.viewPaymentDetails);
 
     const fullPath = this.viewPaymentDetails.payment_ss_client;
-    this.paymentFileName = fullPath.split('/').pop();
-    console.log(this.paymentFileName);
+    // this.paymentFileName = fullPath.split('/').pop();
+     this.paymentFileName = fullPath.split("uploadedPayment/")[1];
+
+
+    console.log(  this.prefixforpayment + this.paymentFileName);
     
 
   }

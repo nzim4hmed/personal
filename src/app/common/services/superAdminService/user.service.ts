@@ -14,17 +14,23 @@ export class UserService {
 
 
 
-    getAllOrderByUserID(sponsor_id:number) {
-        return this._http.get(`${environment.genXApiURL}admin/get-order-by-user/${sponsor_id}`)
-      }
+  getAllOrderByUserID(sponsor_id: number) {
+    return this._http.get(`${environment.genXApiURL}admin/get-order-by-user/${sponsor_id}`)
+  }
 
-    getWalletByUser(sponsor_id:number) {
-        return this._http.get(`${environment.genXApiURL}user/get-wallet/${sponsor_id}`)
-      }
+  getWalletByUser(sponsor_id: number) {
+    return this._http.get(`${environment.genXApiURL}user/get-wallet/${sponsor_id}`)
+  }
+  getDesignationById(designation_id: number) {
+    return this._http.get(`${environment.genXApiURL}user/designation/${designation_id}`)
+  }
+  getLevelById(level_id: number) {
+    return this._http.get(`${environment.genXApiURL}user/level/${level_id}`)
+  }
 
 
-   
-      
+
+
 
 
 }

@@ -8,6 +8,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { MenuItems } from '../../../../../shared/menu-items/menu-items';
 import { AuthenticationService } from 'src/app/common/services/common-service/authentication.service';
 import { CapitalizePipe } from 'src/app/common/pipes/capitalize.pipe';
+import { UserService } from 'src/app/common/services/superAdminService/user.service';
+import { Subject, takeUntil } from 'rxjs';
 
 
 @Component({
@@ -18,17 +20,45 @@ import { CapitalizePipe } from 'src/app/common/pipes/capitalize.pipe';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+  unsubscribe: Subject<any> = new Subject();
   userDetails: any
+  designationDetails: { name: string } | undefined;
+  LevelDetails: any
   role!: string;
   constructor(
-    private _authService: AuthenticationService
+    private _authService: AuthenticationService,
+    private _userService: UserService,
   ) { }
 
   ngOnInit() {
     this.userDetails = this._authService.getLoginUserData()
     console.log(this.userDetails);
     this.role = this.userDetails.role
+    this.getDesignation()
+    this.getLevel()
+  }
 
+  getDesignation() {
+    this._userService.getDesignationById(this.userDetails?.designation_id).pipe(takeUntil(this.unsubscribe)).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.designationDetails = res?.data
+        console.log(this.designationDetails);
+        
+
+      }
+    })
+  }
+  getLevel() {
+    this._userService.getLevelById(this.userDetails?.level_id).pipe(takeUntil(this.unsubscribe)).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.LevelDetails = res?.data
+        console.log(this.LevelDetails);
+        
+
+      }
+    })
   }
   // mobileQuery: MediaQueryList;
   panelOpenState = false;
@@ -50,7 +80,7 @@ export class SidenavComponent implements OnInit {
   usersLinks: any[] = [
     { state: "Admin/users/user-list", name: "User List", type: 'link', icon: 'view_list' },
   ]
- allOrdersLinks: any[] = [
+  allOrdersLinks: any[] = [
     { state: "Admin/orders/all-orders", name: "All Orders List", type: 'link', icon: 'view_list' },
   ]
 

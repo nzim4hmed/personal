@@ -31,7 +31,7 @@
 
 
 
-      <div class="donate-container">
+      <div class="donate-container" >
 
         <!-- Left side: QR code -->
         <div class="qr-code-section">
@@ -67,7 +67,7 @@
         contact our support team.</p>
 
 
-      <div class="">
+      <div class="" [formGroup]="PaymentUpload">
        
           <div class="uploadScreenshot">
             <div class="">
@@ -86,7 +86,7 @@
           <div class="form-group col-md-6 mt-3">
             <mat-form-field class="example-full-width">
               <mat-label>Transaction id</mat-label>
-              <input matInput placeholder="Please enter transaction ID" formControlName="email">
+              <input matInput placeholder="Please enter transaction ID" formControlName="transaction_id">
             </mat-form-field>
           </div>
         

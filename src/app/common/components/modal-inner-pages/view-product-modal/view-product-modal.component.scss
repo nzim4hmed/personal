@@ -1,0 +1,248 @@
+/* qr-payment-dialog.component.css */
+
+// .dialog-container {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     padding: 20px;
+//   }
+  
+//   .qr-code-section {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     margin-bottom: 20px;
+//   }
+  
+//   .qr-code-card {
+//     padding: 20px;
+//     border-radius: 8px;
+//     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+//     display: flex;
+//     justify-content: center;
+//   }
+  
+//   .qr-code-image {
+//     width: 300px;
+//     // height: 200px;
+//   }
+  
+//   .instructions {
+//     margin-top: 10px;
+//     font-size: 14px;
+//     color: #555;
+//     text-align: center;
+//   }
+  
+//   .upload-section {
+//     width: 100%;
+//     margin-bottom: 20px;
+//   }
+  
+//   .upload-field {
+//     width: 100%;
+//   }
+  
+//   .action-buttons {
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//   }
+  
+//   mat-dialog-actions button {
+//     width: 45%;
+//   }
+
+.help-us-banner {
+    width: -webkit-fill-available;
+    text-align: center;
+    background: linear-gradient(to right, #0a599a, #1f76bd);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.help-us-banner h1 {
+
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.donate-container {
+    display: flex;
+    justify-content: space-between;
+    // align-items: flex-start;
+    background-color: white;
+    // border-radius: 8px;
+    // box-shadow: 2px 2px 12px 9px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.qr-code-section,
+.bank-details-section {
+    width: 45%;
+}
+
+.qr-code-section {
+    text-align: center;
+}
+
+.qr-code-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.bank-details-section {
+    background-color: #ececec;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.bank-details-section h2 {
+    margin-bottom: 20px;
+}
+
+.bank-info {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.bank-info li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.bank-info strong {
+    color: #333;
+}
+
+.bank-details-section p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .donate-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .qr-code-section,
+    .bank-details-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .bank-details-section {
+        padding: 15px;
+    }
+}
+  
+
+
+
+
+
+// .payment-modal {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// .upload-section {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin-top: 20px;
+// }
+// .upload-section {
+//   max-width: 500px;
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+// .upload-section .btn-primary{
+//   align-items: center;
+//   display: flex;
+// }
+
+.screenshot-preview img {
+  max-width: 500px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.uploadScreenshot{
+    display: flex;
+    justify-content: space-between;
+    // align-items: flex-start;
+    background-color: white;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+@import  '../../../../../assets/styles/component/inputs.scss';
+
+  
+
+
+.user-list-table{
+ 
+  thead{
+    text-align: center;
+  }
+
+      th{
+        background-color: #395f13;
+        color: #fff;
+        vertical-align: middle;
+        // text-align: center;
+        min-width: 100px;
+      }
+      th:first-child{
+        width: 80px;
+      }
+      th:nth-child(3){
+        min-width: 150px;
+      }
+      th:nth-child(4){
+        min-width: 150px;
+      }
+      th:nth-child(5){
+        min-width: 150px;
+      }
+      th:nth-child(6){
+        min-width: 150px;
+      }
+      th:nth-child(7){
+        min-width: 160px;
+      }
+  
+      th:nth-child(9){
+        min-width: 160px;
+      }
+      th:nth-child(10){
+        min-width: 150px;
+      }
+   
+ 
+      ::ng-deep .mat-sort-header-arrow{
+        opacity: 1 !important;
+        color: #fff !important;
+      }  
+} 
+

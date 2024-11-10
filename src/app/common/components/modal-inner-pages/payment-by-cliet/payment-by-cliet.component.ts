@@ -56,10 +56,14 @@ export class PaymentByClietComponent {
     
 
     return this._fb.group({
-      checkout_id: [this.productData?.checkout_id || '', Validators.required],
-      userid: [this.userDetails.id || '', Validators.required],
+      // checkout_id: [this.productData?.checkout_id || '', Validators.required],
+      userId: [this.userDetails.id || '', Validators.required],
       payment_status: ['Completed' , Validators.required],
+      order_status: ['Confirmed' , Validators.required],
+      transaction_id: [this.productData?.transacation_id ||'' , Validators.required],
       order_number: [this.productData?.order_number || '', Validators.required],
+      payment_service: ['OTHER', ],
+      other_payment_service: [ 'other', ],
       paymentfileName: [ ''],
 
 
@@ -84,6 +88,8 @@ export class PaymentByClietComponent {
     console.log(this.PaymentUpload);
     delete this.PaymentUpload.value.paymentfileName;
     console.log(this.PaymentUpload);
+
+ 
   
     if (!this.PaymentUpload.valid) {
       this._alert.swalPopError("Please fill valid input!");

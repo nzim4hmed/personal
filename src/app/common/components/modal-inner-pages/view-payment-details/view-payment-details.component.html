@@ -20,22 +20,23 @@
           <p><strong>Order Status:</strong> <span>{{viewPaymentDetails.order_status}}</span></p>
           <p><strong>Delivery Date:</strong> <span>{{viewPaymentDetails.delivery_date ? viewPaymentDetails.delivery_date
               : '-'}}</span></p>
-          <p><strong>User Payment Status:</strong> <span>{{viewPaymentDetails.payment_status_client }}</span></p>
+          <p><strong>User Payment Status:</strong> <span>{{viewPaymentDetails.payment_status_client ? viewPaymentDetails.payment_status_client : '' }}</span></p>
           <p><strong>Admin Payment Status:</strong> <span>{{viewPaymentDetails.payment_status }}</span></p>
           <p><strong>Shipping Address:</strong> <span>{{viewPaymentDetails.order_number}}</span></p>
-          <p><strong>Product:</strong> <span>{{viewPaymentDetails.checkout.cart.product.product_name}}</span></p>
-          <p><strong>Category:</strong>
+          <!-- <p><strong>Product:</strong> <span>{{viewPaymentDetails.checkout.cart.product.product_name}}</span></p> -->
+          <!-- <p><strong>Category:</strong>
             <span>{{viewPaymentDetails.checkout.cart.product.product_type.category_name}}</span>
-          </p>
-          <p><strong>Quantity:</strong> <span>{{viewPaymentDetails.checkout.cart.quantity}}</span></p>
-          <p><strong>Price per Unit:</strong> <span>{{viewPaymentDetails.checkout.cart.price_per_unit}}</span></p>
-          <p><strong>Total Amount:</strong> <span>{{viewPaymentDetails.checkout.total_amount}}</span></p>
+          </p> -->
+          <!-- <p><strong>Quantity:</strong> <span>{{viewPaymentDetails.checkout.cart.quantity}}</span></p> -->
+          <!-- <p><strong>Price per Unit:</strong> <span>{{viewPaymentDetails.checkout.cart.price_per_unit}}</span></p> -->
+          <p><strong>Total Amount:</strong> <span>{{viewPaymentDetails.total_amount}}</span></p>
           <p><strong>Remarks:</strong> <span>{{viewPaymentDetails.remarks ? viewPaymentDetails.remarks : '-'}}</span>
           </p>
         </div>
       </div>
       <div class="col-md-6 text-center">
-        <h3 class="h11">Payment Receipt</h3>
+        <h3 class="h11">Payment Receipt </h3>
+      
         <img [src]="prefixforpayment + paymentFileName" alt="Receipt Image" class="receipt-image">
       </div>
     </div>

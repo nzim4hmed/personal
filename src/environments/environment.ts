@@ -14,6 +14,7 @@ export const environment = {
     // url for getting all file
     fileUrl: 'https://api.genxsoftwaresolution.com/api/file/',
     paymentfile: 'https://api.genxsoftwaresolution.com/api/product/payment/',
+
     downloadExcel: 'http://192.168.23.254:100/data/TOPS/',
   
 

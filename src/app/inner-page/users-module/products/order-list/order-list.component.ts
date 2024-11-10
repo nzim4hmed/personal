@@ -19,6 +19,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { PaymentByClietComponent } from 'src/app/common/components/modal-inner-pages/payment-by-cliet/payment-by-cliet.component';
 import { MatInputModule } from '@angular/material/input';
 import { ViewPaymentDetailsComponent } from 'src/app/common/components/modal-inner-pages/view-payment-details/view-payment-details.component';
+import { ViewProductModalComponent } from 'src/app/common/components/modal-inner-pages/view-product-modal/view-product-modal.component';
 
 @Component({
   selector: 'app-order-list',
@@ -28,7 +29,8 @@ import { ViewPaymentDetailsComponent } from 'src/app/common/components/modal-inn
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit{
-  displayedColumns: string[] = ['sr_no','product_image', 'product_name', 'category_name', 'quantity', 'price_per_unit',  'total_amount', 'payment_status_client','transaction_id', 'status' , 'payment'];
+  // displayedColumns: string[] = ['sr_no','product_image', 'product_name', 'category_name', 'quantity', 'price_per_unit',  'total_amount', 'payment_status_client','transaction_id', 'status' , 'payment'];
+  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status', 'purchase_type', 'payment_status_client','payment_service', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','payment'];
   dataSource = new MatTableDataSource<CheckoutList>([]);
   paginationLength!: number
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -65,6 +67,8 @@ export class OrderListComponent implements OnInit{
         
       
         this.proposalList = res.data.map((item: any, index: number) => ({ ...item, tableIndex: index + 1 }));
+        console.log(this.proposalList);
+        
         this.paginationLength = this.proposalList.length
         this.dataSource = new MatTableDataSource(this.proposalList);
         this.dataSource.paginator = this.paginator;
@@ -78,6 +82,27 @@ export class OrderListComponent implements OnInit{
   makePayment(productDetail: any) {
     
     const dialogRef = this._dialog.open(PaymentByClietComponent, {
+      width: '100%',
+      // maxHeight: '600px',
+      panelClass: 'custom-dialog-container' ,
+      data: productDetail,
+      autoFocus: false,
+      // panelClass: 'commonDialogBox',
+      disableClose: false
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+         this.getAllOrderHistory()
+      }
+      console.log(`Dialog result: ${result}`);
+    });
+
+  }
+
+  viewProduct(productDetail: any) {
+    
+    const dialogRef = this._dialog.open(ViewProductModalComponent, {
       width: '100%',
       // maxHeight: '600px',
       panelClass: 'custom-dialog-container' ,

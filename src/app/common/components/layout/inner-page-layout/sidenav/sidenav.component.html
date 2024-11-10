@@ -11,8 +11,19 @@ style="background: url(../../../../../../assets/images/admin-images/background/u
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
-<div class="profile-text"><a class="">{{userDetails.role | capitalize}} Dashboard <i
-            class="ti-angle-down font-12 m-l-5"></i></a></div>
+<div class="profile-text">
+    <a class=""> Name: &nbsp; &nbsp; {{ userDetails?.name}} <i
+        class="ti-angle-down font-12 m-l-5"></i></a>
+    <a class=""> Designation: &nbsp; &nbsp; {{ designationDetails?.name}} <i
+            class="ti-angle-down font-12 m-l-5"></i></a>
+    <a class=""> Level: &nbsp; &nbsp; {{ LevelDetails?.level_name}} <i
+            class="ti-angle-down font-12 m-l-5"></i></a>
+
+    <!-- <a class="">{{userDetails.role | capitalize}}  <i
+            class="ti-angle-down font-12 m-l-5"></i></a>
+    <a class="">{{userDetails.role | capitalize}}  <i
+            class="ti-angle-down font-12 m-l-5"></i></a> -->
+        </div>
 <!-- <mat-menu #sdprofile="matMenu" class="mymegamenu">
     <button mat-menu-item>
         <mat-icon fontIcon="settings"></mat-icon> Settings </button>

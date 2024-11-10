@@ -3,11 +3,11 @@
     <div class="three">
       <h1>User Dashboard</h1>
     </div>
-  <div>
-    <button mat-raised-button color="primary" *ngIf="userDetails.status === 'Active'" >
+  <div *ngIf="userData">
+    <button mat-raised-button color="primary" *ngIf="userData.status === 'Active'" >
       Active
     </button>
-    <button mat-raised-button color="warn" *ngIf="userDetails.status === 'Inactive'">
+    <button mat-raised-button color="warn" *ngIf="userData.status === 'Inactive'">
       Inactive
     </button>
   </div>
@@ -25,3 +25,15 @@
     </div>
   </div>
 </div>
+<!-- <div class="dashboard-summary">
+  <div class="summary-card"  style="background-color: red;">
+    <div class="card-icon" style="background-color:  #ffffff; color: #4CAF50">
+      <mat-icon> bar_chart </mat-icon>
+    </div>
+    <div class="card-content">
+      <h4>Total Bv</h4>
+      <p>{{ 00 }}</p>
+    </div>
+  </div>
+
+</div> -->
