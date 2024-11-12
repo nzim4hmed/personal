@@ -27,7 +27,7 @@ import { ViewProductModalComponent } from 'src/app/common/components/modal-inner
   styleUrls: ['./all-order-list-status.component.scss']
 })
 export class AllOrderListStatusComponent {
-  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status', 'purchase_type', 'payment_status_client','payment_service', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','verifystatus'];
+  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status',  'payment_status_client', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','verifystatus'];
 
   // displayedColumns: string[] = ['sr_no','product_image', 'product_name', 'category_name', 'quantity', 'price_per_unit', 'total_amount','client_status', 'status', 'verifystatus'];
   dataSource!: MatTableDataSource<any>;

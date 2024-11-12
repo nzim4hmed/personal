@@ -104,7 +104,7 @@ export class VerifyStatusComponent {
         next: (res: any) => {
           console.log(res);
           
-          if (res.status == true) {
+          if (res.status == true || res.status == "success") {
             this._dialogRef.close(res);
             //   this._router.navigate(['Admin/product/product-list']);
 

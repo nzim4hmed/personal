@@ -6,6 +6,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthenticationService } from 'src/app/common/services/common-service/authentication.service';
+import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { UserService } from 'src/app/common/services/superAdminService/user.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -29,21 +32,25 @@ export class AdminDashboardComponent implements OnInit {
   };
 
   summaryCards = [
-    { title: 'Total BV', value: this.data.total_bv, icon: 'bar_chart', iconBgColor: '#ffffff', BgColor: '#4CAF50', iconColor: '#4CAF50'},
+    { title: 'Total BV', value: this.data.total_bv, icon: 'bar_chart', iconBgColor: '#ffffff', BgColor: '#4CAF50', iconColor: '#4CAF50' },
     { title: 'Direct Income', value: this.data.direct_income, icon: 'monetization_on', iconBgColor: '#ffffff', BgColor: '#2196F3', iconColor: '#2196F3' },
-    { title: 'Level Income', value: this.data.level_income, icon: 'trending_up', iconBgColor: '#ffffff', BgColor: '#FF9800', iconColor: '#FF9800'},
+    { title: 'Level Income', value: this.data.level_income, icon: 'trending_up', iconBgColor: '#ffffff', BgColor: '#FF9800', iconColor: '#FF9800' },
     { title: 'Personal Bonus', value: this.data.personal_bonus, icon: 'card_giftcard', iconBgColor: '#ffffff', BgColor: '#9C27B0', iconColor: '#9C27B0' },
     { title: 'Total Income', value: this.data.total_income, icon: 'account_balance_wallet', iconBgColor: '#ffffff', BgColor: '#FF5722', iconColor: '#FF5722' },
     { title: 'Total Spent', value: this.data.total_spent, icon: 'shopping_cart', iconBgColor: '#ffffff', BgColor: '#F44336', iconColor: '#F44336' }
   ];
   contactsData: Contact[];
   activityData: Activity[];
-  userDetails:any
+  userDetails: any
+  walletData: any
+  unsubscribe: Subject<any> = new Subject();
 
-  constructor(  private _authenticationService: AuthenticationService,) {
+  constructor(private _authenticationService: AuthenticationService,
+    private _userService :UserService
+  ) {
     this.activityData = activities;
     this.contactsData = contacts;
-  
+
   }
 
 
@@ -51,9 +58,43 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userDetails = this._authenticationService.getLoginUserData()
     console.log(this.userDetails);
+    this.getwallet()
   }
 
-  
+
+  getwallet() {
+    this._userService.getWalletByUser(this.userDetails.sponsor_id).pipe(takeUntil(this.unsubscribe)).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.walletData = res?.data?.wallet
+
+
+        console.log(this.walletData);
+
+        if (this.walletData) {
+          this.summaryCards = [
+            { title: 'Total BV', value: this.walletData?.total_bv, icon: 'bar_chart', iconBgColor: '#ffffff', BgColor: '#4CAF50', iconColor: '#4CAF50' },
+            { title: 'Direct Income', value: this.walletData.direct_income, icon: 'monetization_on', iconBgColor: '#ffffff', BgColor: '#2196F3', iconColor: '#2196F3' },
+            { title: 'Level Income', value: this.walletData.level_income, icon: 'trending_up', iconBgColor: '#ffffff', BgColor: '#FF9800', iconColor: '#FF9800' },
+            // { title: 'Personal Bonus', value: this.walletData.personal_bonus, icon: 'card_giftcard', iconBgColor: '#ffffff', BgColor: '#9C27B0', iconColor: '#9C27B0' },
+            { title: 'Total Income', value: this.calculateTotalIncome(), icon: 'account_balance_wallet', iconBgColor: '#ffffff', BgColor: '#FF5722', iconColor: '#FF5722' },
+            // { title: 'Total Spent', value: this.walletData.total_spent, icon: 'shopping_cart', iconBgColor: '#ffffff', BgColor: '#F44336', iconColor: '#F44336' }
+          ];
+        }
+
+      }, error: (err: any) => {
+        console.log('error', err);
+      }
+    })
+  }
+
+
+  calculateTotalIncome(): number {
+    const directIncome = Number(this.walletData?.direct_income || 0);
+    const levelIncome = Number(this.walletData?.level_income || 0);
+    return directIncome + levelIncome;
+  }
+
 
 
 
@@ -71,88 +112,88 @@ export interface Contact {
 
 export const contacts: Contact[] = [
   {
-      image: 'assets/images/users/1.jpg',
-      class: 'online',
-      name: 'Pavan kumar',
-      email: 'info@wrappixel.com'
+    image: 'assets/images/users/1.jpg',
+    class: 'online',
+    name: 'Pavan kumar',
+    email: 'info@wrappixel.com'
   },
   {
-      image: 'assets/images/users/2.jpg',
-      class: 'busy',
-      name: 'Sonu Nigam',
-      email: 'pamela1987@gmail.com'
+    image: 'assets/images/users/2.jpg',
+    class: 'busy',
+    name: 'Sonu Nigam',
+    email: 'pamela1987@gmail.com'
   },
   {
-      image: 'assets/images/users/4.jpg',
-      class: 'offline',
-      name: 'Pavan kumar',
-      email: 'kat@gmail.com'
+    image: 'assets/images/users/4.jpg',
+    class: 'offline',
+    name: 'Pavan kumar',
+    email: 'kat@gmail.com'
   },
   {
-      image: 'assets/images/users/5.jpg',
-      class: 'online',
-      name: 'Andrew',
-      email: 'info@wrappixel.com'
+    image: 'assets/images/users/5.jpg',
+    class: 'online',
+    name: 'Andrew',
+    email: 'info@wrappixel.com'
   },
   {
-      image: 'assets/images/users/6.jpg',
-      class: 'busy',
-      name: 'Jonathan Joe',
-      email: 'jj@gmail.com'
+    image: 'assets/images/users/6.jpg',
+    class: 'busy',
+    name: 'Jonathan Joe',
+    email: 'jj@gmail.com'
   },
 ]
 
-export interface Activity{
-  name:string;
-  image:string;
-  commentTime:string;
-  comment:string;
+export interface Activity {
+  name: string;
+  image: string;
+  commentTime: string;
+  comment: string;
 
-  bottomImage:string;
-  buttonColor:string;
+  bottomImage: string;
+  buttonColor: string;
 
 }
 
-export const activities:Activity[]=[
+export const activities: Activity[] = [
   {
-      name:'Nirav joshi',
-      image:'assets/images/users/1.jpg',
-      commentTime:'5 minute ago',
-      comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.',
-  
-      bottomImage:'assets/images/big/img2.jpg',
-      buttonColor:''
-  
+    name: 'Nirav joshi',
+    image: 'assets/images/users/1.jpg',
+    commentTime: '5 minute ago',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.',
+
+    bottomImage: 'assets/images/big/img2.jpg',
+    buttonColor: ''
+
   },
   {
-      name:'Sunil joshi',
-      image:'assets/images/users/2.jpg',
-      commentTime:'3 minute ago',
-      comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.',
-  
-      bottomImage:'',
-      buttonColor:'primary'
-  
+    name: 'Sunil joshi',
+    image: 'assets/images/users/2.jpg',
+    commentTime: '3 minute ago',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.',
+
+    bottomImage: '',
+    buttonColor: 'primary'
+
   },
   {
-      name:'Vishal Bhatt',
-      image:'assets/images/users/3.jpg',
-      commentTime:'1 minute ago',
-      comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.',
-  
-      bottomImage:'assets/images/big/img1.jpg',
-      buttonColor:''
-  
+    name: 'Vishal Bhatt',
+    image: 'assets/images/users/3.jpg',
+    commentTime: '1 minute ago',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.',
+
+    bottomImage: 'assets/images/big/img1.jpg',
+    buttonColor: ''
+
   },
   {
-      name:'Dhiren Adesara',
-      image:'assets/images/users/4.jpg',
-      commentTime:'7 minute ago',
-      comment:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.',
-  
-      bottomImage:'',
-      buttonColor:'warn'
-  
+    name: 'Dhiren Adesara',
+    image: 'assets/images/users/4.jpg',
+    commentTime: '7 minute ago',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.',
+
+    bottomImage: '',
+    buttonColor: 'warn'
+
   }
 
 ]
