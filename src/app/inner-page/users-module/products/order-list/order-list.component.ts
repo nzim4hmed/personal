@@ -30,7 +30,7 @@ import { ViewProductModalComponent } from 'src/app/common/components/modal-inner
 })
 export class OrderListComponent implements OnInit{
   // displayedColumns: string[] = ['sr_no','product_image', 'product_name', 'category_name', 'quantity', 'price_per_unit',  'total_amount', 'payment_status_client','transaction_id', 'status' , 'payment'];
-  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status', 'purchase_type', 'payment_status_client','payment_service', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','payment'];
+  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status',  'payment_status_client', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','payment'];
   dataSource = new MatTableDataSource<CheckoutList>([]);
   paginationLength!: number
   @ViewChild(MatPaginator) paginator!: MatPaginator;

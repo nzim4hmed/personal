@@ -14,7 +14,7 @@ export class ADminService {
 
     // getallorderByID
     getAllOrderListToVerify(formData:any) {
-        return this._http.put(`${environment.genXApiURL}admin/verify-order-status`,formData )
+        return this._http.put(`${environment.genXApiURL}admin/verify-payment-status`,formData )
       }
       // userId
       // orderId

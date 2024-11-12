@@ -3,7 +3,7 @@
     <div style="display: flex; justify-content: space-between; background-color: #395f13;">
       <img src="../../../../../assets/images/logo/always_green_logo.png" class=" w-18" style="    width: 18% !important;
       padding: 4px 8px;">
-      <h2 mat-dialog-title style="color: white;">Your Product List</h2>
+      <h2 mat-dialog-title style="color: white;">Products List</h2>
       <button class="closeBtn" mat-icon-button [mat-dialog-close]="false">
         <mat-icon class="close-icon" style="color: white;">close</mat-icon>
       </button>
@@ -26,11 +26,11 @@
             <div class="row user-list-table">
                 <div class="table-responsive">
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table" matSort>
-        
+<!--         
                         <ng-container matColumnDef="sr_no">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Sr. No. </th>
                             <td mat-cell *matCellDef="let element; let i = index;"> {{element.tableIndex}} </td>
-                        </ng-container>
+                        </ng-container> -->
         
                         <!-- Product Image Column -->
                         <ng-container matColumnDef="product_image">
@@ -48,11 +48,11 @@
                         </ng-container>
         
                         <!-- Category Name Column -->
-                        <ng-container matColumnDef="category_name">
+                        <!-- <ng-container matColumnDef="category_name">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
                             <td mat-cell *matCellDef="let element"> {{element.product.category_id}}
                             </td>
-                        </ng-container>
+                        </ng-container> -->
         
                         <!-- Quantity Column -->
                         <ng-container matColumnDef="quantity">

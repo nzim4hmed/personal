@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from 'src/app/material.module';
 import { VerifyStatusComponent } from 'src/app/common/components/modal-inner-pages/verify-status/verify-status.component';
 import { ZoomHoverDirective } from 'src/app/common/_helpers/directives/zoom-hover.directive';
+import { ViewProductModalComponent } from 'src/app/common/components/modal-inner-pages/view-product-modal/view-product-modal.component';
 
 @Component({
   selector: 'app-all-order-list-status',
@@ -26,7 +27,9 @@ import { ZoomHoverDirective } from 'src/app/common/_helpers/directives/zoom-hove
   styleUrls: ['./all-order-list-status.component.scss']
 })
 export class AllOrderListStatusComponent {
-  displayedColumns: string[] = ['sr_no','product_image', 'product_name', 'category_name', 'quantity', 'price_per_unit', 'total_amount','client_status', 'status', 'verifystatus'];
+  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status', 'purchase_type', 'payment_status_client','payment_service', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','verifystatus'];
+
+  // displayedColumns: string[] = ['sr_no','product_image', 'product_name', 'category_name', 'quantity', 'price_per_unit', 'total_amount','client_status', 'status', 'verifystatus'];
   dataSource!: MatTableDataSource<any>;
   paginationLength!: number
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -103,6 +106,27 @@ export class AllOrderListStatusComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  viewProduct(productDetail: any) {
+    
+    const dialogRef = this._dialog.open(ViewProductModalComponent, {
+      width: '100%',
+      // maxHeight: '600px',
+      panelClass: 'custom-dialog-container' ,
+      data: productDetail,
+      autoFocus: false,
+      // panelClass: 'commonDialogBox',
+      disableClose: false
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+        //  this.getAllOrderHistory()
+      }
+      console.log(`Dialog result: ${result}`);
+    });
+
   }
 
 }

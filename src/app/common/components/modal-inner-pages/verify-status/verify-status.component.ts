@@ -71,8 +71,8 @@ export class VerifyStatusComponent {
 
     return this._fb.group({
     
-      userId: [this.userDetails.id || '', Validators.required],
-      orderId: [this.paymentDetails.checkout_id || '', Validators.required],
+      userId: [this.paymentDetails.user_id || '', Validators.required],
+      orderId: [this.paymentDetails.id || '', Validators.required],
       orderStatus: ['Confirmed'],
       paymentStatus: ['Completed'],
       deliveryDate: [this.paymentDetails?.delivery_date || '', Validators.required],
@@ -104,7 +104,7 @@ export class VerifyStatusComponent {
         next: (res: any) => {
           console.log(res);
           
-          if (res.status == 'success') {
+          if (res.status == true) {
             this._dialogRef.close(res);
             //   this._router.navigate(['Admin/product/product-list']);
 

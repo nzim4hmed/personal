@@ -1,12 +1,12 @@
 <div class="container-fluid">
 	<div class="row justify-content-between mb-2">
 		<div class="col-md-auto">
-			<h2>All Orders List</h2>
+			<h2>All Order List</h2>
 		</div>
 		<div class="col-md-3 col-12 ">
 			<mat-form-field class="example-full-width ">
 				<mat-label>Search </mat-label>
-				<input matInput (keyup)="applyFilter($event)" placeholder="Search Product" #input />
+				<input matInput (keyup)="applyFilter($event)" placeholder="Search Order" #input />
 			</mat-form-field>
 		</div>
 	</div>
@@ -14,45 +14,64 @@
 		<div class="table-responsive">
 			<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table" matSort>
 
-				<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  matSort  multiTemplateDataRows> -->
-				<!-- Position Column -->
 				<ng-container matColumnDef="sr_no">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Sr. No. </th>
 					<td mat-cell *matCellDef="let element; let i = index;"> {{element.tableIndex}} </td>
 				</ng-container>
 
 				<!-- Product Image Column -->
-				<ng-container matColumnDef="product_image">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> Product </th>
-					<td mat-cell *matCellDef="let element">
-						<img [src]="prefixViewPath + element.checkout.cart.product.product_image"
-							alt="{{element.checkout.cart.product.product_name}}">
+				 
+				<ng-container matColumnDef="order_number">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Order No. </th>
+					<td mat-cell *matCellDef="let element">{{element.order_number}}
+						<!-- <img [src]="prefixViewPath + element.product.product.product_image"
+							alt="{{element.checkout.cart.product.product_name}}" width="50px"> -->
+					</td>
+				</ng-container>
+
+				<!-- Category Name Column -->
+				<ng-container matColumnDef="transacation_id">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Id </th>
+					<td mat-cell *matCellDef="let element"> {{element.transacation_id}}
 					</td>
 				</ng-container>
 
 				<!-- Product Name Column -->
-				<ng-container matColumnDef="product_name">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
-					<td mat-cell *matCellDef="let element"> {{element.checkout.cart.product.product_name}} </td>
+				<ng-container matColumnDef="order_status">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Order Status </th>
+					<td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
 				</ng-container>
 
-				<!-- Category Name Column -->
-				<ng-container matColumnDef="category_name">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
-					<td mat-cell *matCellDef="let element"> {{element.checkout.cart.product.product_type.category_name}}
-					</td>
-				</ng-container>
+				
 
 				<!-- Quantity Column -->
-				<ng-container matColumnDef="quantity">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
-					<td mat-cell *matCellDef="let element"> {{element.checkout.cart.quantity}} </td>
+				<ng-container matColumnDef="purchase_type">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Purchase Type </th>
+					<td mat-cell *matCellDef="let element"> {{element.purchase_type ? element.purchase_type : '-'}} </td>
 				</ng-container>
 
 				<!-- Price per Unit Column -->
-				<ng-container matColumnDef="price_per_unit">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> Price/Unit </th>
-					<td mat-cell *matCellDef="let element"> ₹{{element.checkout.cart.price_per_unit}} </td>
+				<ng-container matColumnDef="payment_status_client">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Status </th>
+					<td mat-cell *matCellDef="let element"> {{element.payment_status_client}} </td>
+				</ng-container>
+
+				<!-- Price per Unit Column -->
+				<ng-container matColumnDef="payment_service">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Service </th>
+					<td mat-cell *matCellDef="let element"> {{element.payment_service}} </td>
+				</ng-container>
+
+				<!-- Price per Unit Column -->
+				<ng-container matColumnDef="status">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+					<td mat-cell *matCellDef="let element"> {{element.payment_status}} </td>
+				</ng-container>
+
+				<!-- Price per Unit Column -->
+				<ng-container matColumnDef="shipping_address">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Shipping Address </th>
+					<td mat-cell *matCellDef="let element"> {{element.shipping_address}} </td>
 				</ng-container>
 
 
@@ -60,23 +79,34 @@
 				<!-- Total Amount Column -->
 				<ng-container matColumnDef="total_amount">
 					<th mat-header-cell *matHeaderCellDef mat-sort-header> Total Amount </th>
-					<td mat-cell *matCellDef="let element"> ₹{{element.checkout.total_amount}} </td>
+					<td mat-cell *matCellDef="let element"> ₹{{element.total_amount}} </td>
 				</ng-container>
 
 
+
+
+				<ng-container matColumnDef="remarks">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Remarks </th>
+					<td mat-cell *matCellDef="let element"> {{element.remark}} </td>
+				</ng-container>
 
 				<!-- Payment Verify Column -->
-				<ng-container matColumnDef="client_status">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Client Status </th>
-					<td mat-cell *matCellDef="let element"> {{element.payment_status_client}} </td>
-				</ng-container>
+				<ng-container matColumnDef="view_product">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Products </th>
+					<td mat-cell *matCellDef="let element">
+						<div style="cursor: pointer; min-width: 160px;">
+							<!-- <mat-icon>edit</mat-icon>  -->
+							<button  mat-raised-button color="primary"
+								(click)="viewProduct(element)">
+								<mat-icon>remove_red_eye</mat-icon>
+								View Products
+							</button>
 
-				<!-- Payment Verify Column -->
-				<ng-container matColumnDef="status">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-					<td mat-cell *matCellDef="let element"> {{'-'}} </td>
+							
+						
+						</div>
+					</td>
 				</ng-container>
-
 				<!-- Payment Verify Column -->
 				<ng-container matColumnDef="verifystatus">
 					<th mat-header-cell *matHeaderCellDef> Verify Status </th>

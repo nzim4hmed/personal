@@ -34,7 +34,8 @@ export class SidenavComponent implements OnInit {
     this.userDetails = this._authService.getLoginUserData()
     console.log(this.userDetails);
     this.role = this.userDetails.role
-    this.getDesignation()
+    if(this.userDetails.designation_id)this.getDesignation()
+    
     this.getLevel()
   }
 
