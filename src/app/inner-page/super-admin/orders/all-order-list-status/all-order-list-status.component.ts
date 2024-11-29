@@ -18,6 +18,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { VerifyStatusComponent } from 'src/app/common/components/modal-inner-pages/verify-status/verify-status.component';
 import { ZoomHoverDirective } from 'src/app/common/_helpers/directives/zoom-hover.directive';
 import { ViewProductModalComponent } from 'src/app/common/components/modal-inner-pages/view-product-modal/view-product-modal.component';
+import { ViewOrderDetailsComponent } from 'src/app/common/components/modal-inner-pages/view-order-details/view-order-details.component';
 
 @Component({
   selector: 'app-all-order-list-status',
@@ -27,7 +28,7 @@ import { ViewProductModalComponent } from 'src/app/common/components/modal-inner
   styleUrls: ['./all-order-list-status.component.scss']
 })
 export class AllOrderListStatusComponent {
-  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status',  'payment_status_client', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','verifystatus'];
+  displayedColumns: string[] = ['sr_no','distributorId','userName','order_number', 'transacation_id','order_date','delivery_date', 'shipping_address',   'total_amount', 'remarks','order_status',  'payment_status_client', 'status' , 'view_product','verifystatus'];
 
   // displayedColumns: string[] = ['sr_no','product_image', 'product_name', 'category_name', 'quantity', 'price_per_unit', 'total_amount','client_status', 'status', 'verifystatus'];
   dataSource!: MatTableDataSource<any>;
@@ -82,6 +83,25 @@ export class AllOrderListStatusComponent {
 
     const dialogRef = this._dialog.open(VerifyStatusComponent, {
       // width: '100%',
+      // maxHeight: '600px',
+      panelClass: 'custom-dialog-container',
+      data: productDetail,
+      autoFocus: false,
+      // panelClass: 'commonDialogBox',
+      disableClose: false
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getproductListData()
+      }
+      console.log(`Dialog result: ${result}`);
+    });
+
+  }
+  viewDetails(productDetail: any) {
+
+    const dialogRef = this._dialog.open(ViewOrderDetailsComponent, {
+      width: '100%',
       // maxHeight: '600px',
       panelClass: 'custom-dialog-container',
       data: productDetail,

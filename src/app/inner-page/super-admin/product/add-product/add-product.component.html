@@ -87,22 +87,32 @@
             </div>
         </div>
         <div class="row">
-           
+            <div class="col-md-6 my-2">
+                <mat-form-field class="example-full-width">
+                    <mat-label>HSN NO.</mat-label>
+                    <input type="number" matInput placeholder="HSN No." formControlName="hsn_no">
+                </mat-form-field>
+            </div>
             <div class="col-md-6 my-2">
                 <mat-form-field appearance="fill">
                     <mat-label>Tax Rate</mat-label>
                     <mat-select formControlName="tax_rate">
-                        <mat-option value="GST@5">GST 5%</mat-option>
-                        <mat-option value="GST@12">GST 12%</mat-option>
-                        <mat-option value="GST@18">GST 18%</mat-option>
-                        <mat-option value="IGST@12">IGST 12%</mat-option>
-                        <mat-option value="IGST@18">IGST 18%</mat-option>
+                        <mat-option value="5">GST 5%</mat-option>
+                        <mat-option value="12">GST 12%</mat-option>
+                        <mat-option value="18">GST 18%</mat-option>
+                        <mat-option value="12">IGST 12%</mat-option>
+                        <mat-option value="18">IGST 18%</mat-option>
                         <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
                             {{food.viewValue}}
                         </mat-option> -->
                     </mat-select>
                 </mat-form-field>
             </div>
+    
+        </div>
+        <div class="row">
+           
+     
             <div class="col-md-6 my-2">
                 <mat-form-field class="example-full-width">
                     <mat-label>Description</mat-label>

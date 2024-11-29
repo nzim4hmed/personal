@@ -38,51 +38,52 @@ export class AuthInterceptor implements HttpInterceptor {
         .set('Accept', 'application/json, text/plain, */*')
     });
 
+    // return next.handle(authReq).pipe(
+    //   catchError((error: HttpErrorResponse) => {
+    //     switch (error.status) {
+    //       case 400:
+    //         console.error('Bad Request:', error.message);
+    //         break;
+    //       case 401:
+    //         console.error('Unauthorized, logging out.');
+    //         this.authenticationService.logout();
+    //         break;
+    //       case 403:
+    //         console.error('Access Denied:', error.message);
+    //         break;
+    //       case 404:
+    //         console.error('Resource Not Found:', error.message);
+    //         break;
+    //       case 500:
+    //         console.error('Server Error:', error.message);
+    //         break;
+    //       case 409:
+    //         console.error('User not active');
+    //         this._alert.swalPopError('Error: Sponsor is not active');
+    //         break;
+    //       default:
+    //         console.error(`Error Status: ${error.status}`, error.message);
+    //     }
+
+    //     return throwError(() => new Error(error.message));
+    //   })
+    // );
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
-        switch (error.status) {
-          case 400:
-            // Bad Request
-            console.error('Bad Request:', error.message);
-            // Handle 400 errors (optional: show message to user)
-            break;
-          case 401:
-            // Unauthorized
-            console.error('Unauthorized, logging out.');
-            this.authenticationService.logout();
-            // Optional: redirect to login page
-            break;
-          case 403:
-            // Forbidden
-            console.error('Access Denied:', error.message);
-            // Optional: handle forbidden case, like showing an alert
-            break;
-          case 404:
-            // Not Found
-            console.error('Resource Not Found:', error.message);
-            // Optional: handle 404 errors (navigate to a 404 page, etc.)
-            break;
-          case 500:
-            // Internal Server Error
-            console.error('Server Error:', error.message);
-            // Handle server errors, show a generic error message to the user
-            break;
-          case 409:
-            // Internal Server Error
-            console.error('User not active');
-
-            this._alert.swalPopError('Error: Sponsor is not active');
-            // Handle server errors, show a generic error message to the user
-            break;
-          default:
-            // Handle other error statuses
-            console.error(`Error Status: ${error.status}`, error.message);
-        }
-
-        // Pass the error to the caller
-        return throwError(() => new Error(error.message));
+        // Extract the error details
+        const customError = {
+          status: error.status,
+          message: error.error?.message || error.message,
+          statusCode: error.error?.statusCode || error.status
+        };
+  
+        console.error('Intercepted Error:', customError);
+  
+        // Rethrow the custom error
+        return throwError(() => customError);
       })
     );
+  
   }
 
 }

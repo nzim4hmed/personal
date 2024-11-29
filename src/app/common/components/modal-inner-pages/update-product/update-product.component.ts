@@ -74,6 +74,7 @@ export class UpdateProductComponent implements OnInit {
       stock_qty: [data?.stock_qty || '', Validators.required],
       tax_rate: [data?.tax_rate || '', Validators.required],
       description: [data?.description || '', Validators.required],
+      hsn_no: ['', Validators.required],
     })
   }
 
@@ -81,7 +82,7 @@ export class UpdateProductComponent implements OnInit {
   saveProduct(formVal: any) {
     console.log("hello");
     console.log(formVal.value);
-    
+    formVal.value.hsn_no = formVal.value.hsn_no.toString();
     if (!this.ProductForm.valid) {
       this._alert.swalPopError("Please fill valid input!");
       this.ProductForm.markAllAsTouched();

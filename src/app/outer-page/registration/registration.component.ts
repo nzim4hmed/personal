@@ -58,7 +58,7 @@ export class RegistrationComponent implements OnInit {
       state: ['', Validators.required],
       city: ['', Validators.required],
       pincode: ['', Validators.required],
-      mobile_number: ['', Validators.required],
+      mobile_number: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       email: ['', Validators.compose([Validators.required, Validators.email]) ],
     
       marital_status: ['', Validators.required],
@@ -69,7 +69,7 @@ export class RegistrationComponent implements OnInit {
       branch_name: [''],
       account_number: [''],
       ifsc_code: [''],
-      pan_number: ['', Validators.required],
+      pan_number: ['', [Validators.required, Validators.pattern('^[A-Z]{5}[0-9]{4}[A-Z]$')]],
       password: ['', [Validators.required, passwordValidator()]],
       full_name: ['fullname Extra', Validators.required],
       // gst_no: ['removed'],
@@ -120,8 +120,12 @@ export class RegistrationComponent implements OnInit {
 
         },
         error: (err: any) => { 
-          // this.registrationForm.reset();
-          console.log('End of error block'); 
+
+          if (err.statusCode == 409) {
+            this._alert.swalPopError(err.message || 'Unauthorized');
+          } else {
+            this._alert.swalPopError(  (err.message || 'Unknown error'));
+          }
         }
         
         
@@ -144,6 +148,11 @@ export class RegistrationComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
 
+  }
+
+  onPanInput(event: Event): void {
+    const input = event.target as HTMLInputElement; // Assert the correct type
+    this.registrationForm.controls['pan_number'].setValue(input.value.toUpperCase(), { emitEvent: false });
   }
 
 

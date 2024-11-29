@@ -19,7 +19,7 @@ import { ConfirmationModalComponent } from 'src/app/common/components/modal-inne
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'sponsor_id', 'email', 'gender', 'dob', 'mobile_number', 'marital_status', 'state', 'city', 'address', 'status'];
+  displayedColumns: string[] = ['position', 'name', 'sponsor_id', 'email', 'gender', 'dob','joining_date' ,'mobile_number','pan_number', 'marital_status', 'state', 'city', 'address', 'status'];
   dataSource!: MatTableDataSource<any>;
   paginationLength!: number
   @ViewChild(MatPaginator) paginator!: MatPaginator;

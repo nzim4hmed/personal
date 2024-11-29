@@ -69,13 +69,17 @@ export class AddProductComponent implements OnInit {
       stock_qty: ['', Validators.required],
       tax_rate: ['', Validators.required],
       description: ['', Validators.required],
+      hsn_no: ['', Validators.required],
+      
     })
   }
 
 
   saveProduct(formVal: any) {
     console.log("hello");
-    console.log(formVal.value);
+    console.log(typeof formVal.value.hsn_no);
+    console.log(typeof formVal.value.hsn_no);
+    formVal.value.hsn_no = formVal.value.hsn_no.toString();
     if (!this.ProductForm.valid) {
       this._alert.swalPopError("Please fill valid input!");
       this.ProductForm.markAllAsTouched();
@@ -84,6 +88,7 @@ export class AddProductComponent implements OnInit {
       this._productService.addProduct(formVal.value).pipe(takeUntil(this.unsubscribe)).subscribe({
         next: (res: any) => {
           console.log(res);
+
           
           if (res.status == 'success') {
 

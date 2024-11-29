@@ -61,7 +61,6 @@ export class AdminDashboardComponent implements OnInit {
     this.getwallet()
   }
 
-
   getwallet() {
     this._userService.getWalletByUser(this.userDetails.sponsor_id).pipe(takeUntil(this.unsubscribe)).subscribe({
       next: (res: any) => {
@@ -76,9 +75,9 @@ export class AdminDashboardComponent implements OnInit {
             { title: 'Total BV', value: this.walletData?.total_bv, icon: 'bar_chart', iconBgColor: '#ffffff', BgColor: '#4CAF50', iconColor: '#4CAF50' },
             { title: 'Direct Income', value: this.walletData.direct_income, icon: 'monetization_on', iconBgColor: '#ffffff', BgColor: '#2196F3', iconColor: '#2196F3' },
             { title: 'Level Income', value: this.walletData.level_income, icon: 'trending_up', iconBgColor: '#ffffff', BgColor: '#FF9800', iconColor: '#FF9800' },
-            // { title: 'Personal Bonus', value: this.walletData.personal_bonus, icon: 'card_giftcard', iconBgColor: '#ffffff', BgColor: '#9C27B0', iconColor: '#9C27B0' },
+             { title: 'Personal Bonus', value: this.walletData.personal_bonus, icon: 'card_giftcard', iconBgColor: '#ffffff', BgColor: '#9C27B0', iconColor: '#9C27B0' },
             { title: 'Total Income', value: this.calculateTotalIncome(), icon: 'account_balance_wallet', iconBgColor: '#ffffff', BgColor: '#FF5722', iconColor: '#FF5722' },
-            // { title: 'Total Spent', value: this.walletData.total_spent, icon: 'shopping_cart', iconBgColor: '#ffffff', BgColor: '#F44336', iconColor: '#F44336' }
+            { title: 'Total Spent', value: this.walletData.total_spent, icon: 'shopping_cart', iconBgColor: '#ffffff', BgColor: '#F44336', iconColor: '#F44336' }
           ];
         }
 
@@ -87,6 +86,9 @@ export class AdminDashboardComponent implements OnInit {
       }
     })
   }
+
+
+
 
 
   calculateTotalIncome(): number {

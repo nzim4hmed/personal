@@ -1,0 +1,193 @@
+<!-- qr-payment-dialog.component.html -->
+<mat-card class="dialog-container">
+    <div style="display: flex; justify-content: space-between; background-color: #395f13;">
+      <img src="../../../../../assets/images/logo/always_green_logo.png" class=" w-18" style="    width: 18% !important;
+      padding: 4px 8px;">
+      <h2 mat-dialog-title style="color: white;">Generated Bill</h2>
+      <button class="closeBtn" mat-icon-button [mat-dialog-close]="false">
+        <mat-icon class="close-icon" style="color: white;">close</mat-icon>
+      </button>
+    </div>
+  
+  
+    <mat-dialog-content>
+     
+    <div class="container11" #reportContent >
+        <!-- Header Section -->
+        <div class=" invoice-header" style="border-bottom: 2px solid #000; padding: 10px;">
+            <div class="txtcntr">
+                <img src="../../../../../assets/images/logo/image.png" alt="AlwaysGreenLive">
+            </div>
+            <div class="secc1">
+                <h2 style="text-align: center; margin:5px">ALWAYS GREENLIVE</h2>
+                <p style="text-align: center; margin:4px">Pilot No. A-764, Dabua Pali Road NIT Faridabad, HR-121001</p>
+                <p style="text-align: center; margin:4px">Mail: feedbackgreenlivecom, Ph: 9210871886</p>
+                <p style="text-align: center; margin:4px">GSTIN: 06AAPYI6783N1ZM, PAN No.: AAPYI6783N</p>
+                <p style="text-align: center; margin:4px">FSSAI No: 10823003000065</p>
+            </div>
+        </div>
+
+        <!-- Invoice Details Section -->
+        <div class="invoice-Detail-section">
+            <div class=" section sec1 secc1" style="border-right:2px solid;">
+                <h2 style="margin: 0px 0px 8px 0px; text-transform: capitalize; ">{{viewBillDetails.cart.product[0].user.name}}</h2>
+                <p>Address: {{viewBillDetails.cart.product[0].user.address}}</p>
+                <p>Ph. No. {{viewBillDetails.cart.product[0].user.mobile_number}}</p>
+                <br>
+                <p>DISTRIBUTOR ID :  {{viewBillDetails.cart.product[0].user.sponsor_id}}</p>
+                <p>DISTRIBUTOR NAME: {{viewBillDetails.cart.product[0].user.name.toUpperCase()}}</p>
+            </div>
+            <div class=" section sec2 secc1">
+                <h2>GST INVOICE</h2>
+            </div>
+            <div class=" section sec1 secc1" style="border-left:2px solid;">
+                <h2 style="margin: 0px 0px 8px 0px;">INVOICE DETAILS</h2>
+                <p>Invoice No. : {{viewBillDetails.id}}</p>
+                <p>Invoice Date : {{viewBillDetails.created_at | date:'dd/MM/yyyy'}}</p>
+                <p>Invoice Due Date: 18/12/2024</p>
+                <p>ORDER No.  : {{viewBillDetails.order_number}}</p>
+                <p>Transaction ID.  : {{viewBillDetails.transacation_id}}</p>
+            </div>
+        </div>
+
+        <!-- Items Table Section -->
+        <div class=" mt-3">
+            <div class="" style="margin: 5px 5px;">
+                <!-- <table class="table table-bordered txtcntr">
+                    <thead>
+                        <tr>
+                            <th>Sn.</th>
+                            <th>Qty.</th>
+                            <th>Description of Goods</th>
+                            <th>HSN</th>
+                            <th>Rate</th>
+                            <th>UOM</th>
+                            <th>Amount</th>
+                            <th>CGST</th>
+                            <th>SGST</th>
+                            <th>IGST</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>80</td>
+                            <td>Gas-o Less Churn 60gm</td>
+                            <td>3004</td>
+                            <td>61.00</td>
+                            <td>Pcs.</td>
+                            <td>4880.00</td>
+                            <td>2.5%</td>
+                            <td>122.00</td>
+                            <td>2.5%</td>
+                            <td>122.00</td>
+                         
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>80</td>
+                            <td>Gas-o Less Churn 60gm</td>
+                            <td>3004</td>
+                            <td>61.00</td>
+                            <td>Pcs.</td>
+                            <td>4880.00</td>
+                            <td>2.5%</td>
+                            <td>122.00</td>
+                            <td>2.5%</td>
+                            <td>122.00</td>
+                        
+                        </tr>
+               
+              
+                        <tr>
+                            <td colspan="10" class="grand-total-section">Grand Total</td>
+                            <td class="grand-total">20764.00</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <table class="table table-bordered txtcntr">
+                    <thead>
+                        <tr>
+                            <th>Sn.</th>
+                            <th>Qty.</th>
+                            <th>Description of Goods</th>
+                            <th>HSN</th>
+                            <th>Rate</th>
+                            <th>UOM</th>
+                            <th>Amount</th>
+                            <th>CGST</th>
+                            <th>SGST</th>
+                            <th>IGST</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of viewBillDetails.cart.product; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.product.product_name }}</td>
+                            <td>{{ item.product.hsn_no }}</td>
+                            <td>{{ item.product.mrp }}</td>
+                            <td>{{ item.product.stock_type }}</td>
+                            <td>{{ item.total_price }}</td>
+                            <!-- <td>{{"ff" }}</td>
+                            <td>{{"fff" }}</td>
+                            <td>{{ "ffff" }}</td> -->
+                            <td>{{ calculateTax(item.total_price, item.product.tax_rate, 'CGST') }}</td>
+                            <td>{{ calculateTax(item.total_price, item.product.tax_rate, 'SGST') }}</td>
+                            <td>{{ calculateTax(item.total_price, item.product.tax_rate, 'IGST') }}</td>
+                            <td>{{ item.total_price }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="grand-total-section">Grand Total</td>
+                            <td class="grand-total">{{ grandTotal}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+        <!-- Grand Total in Words Section -->
+        <div class=" mt-3">
+            <div class="">
+                <p class="grand-total">Grand Total in Words: <em>{{grandTotalInWords}}</em></p>
+            </div>
+        </div>
+        <!-- Terms and Conditions Section -->
+        <div class=" mt-4">
+            <div class="terms">
+                <p>Terms & Conditions:</p>
+                <ol>
+                    <li>Goods once sold will not be taken back or exchanged.</li>
+                    <li>Expiry accepted between 1st to 10th every month.</li>
+                    <li>Bill not paid by due date will make billing stop.</li>
+                    <li>Check all products thoroughly out of any damages before accepting delivery.</li>
+                    <li>All disputes are subject to Faridabad jurisdiction only.</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Signature Section -->
+        <div class="mt-5 signature">
+            <div class="">
+                <p>(Receiver's Signature)</p>
+            </div>
+            <div class=" text-end" style=" padding: 0px 15px">
+                <p>For Always GreenLive</p>
+                <p class="mt-5">Authorized Signature</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-end">
+        <button mat-raised-button color="primary"  (click)="downloadPdf()">
+            <mat-icon>download</mat-icon>
+            Download Bill 
+        </button>
+    </div>
+    </mat-dialog-content>
+  
+
+
+
+  </mat-card>
+  

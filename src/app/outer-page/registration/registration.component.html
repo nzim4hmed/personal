@@ -158,6 +158,9 @@
                   <mat-label>Phone</mat-label>
                   <input matInput placeholder="please enter phone No." formControlName="mobile_number">
                 </mat-form-field>
+                <div class="danger1" *ngIf="registrationForm.get('mobile_number')?.errors?.['pattern']">
+                  Please enter a valid 10-digit mobile number.
+                </div>
               </div>
               <div class="form-group col-md-6 mt-3">
                 <mat-form-field class="example-full-width">
@@ -229,8 +232,11 @@
                 <div class="form-group col-md-6 mt-3">
                   <mat-form-field class="example-full-width">
                     <mat-label>PAN Number</mat-label>
-                    <input matInput placeholder="Please enter PAN number" formControlName="pan_number">
+                    <input matInput placeholder="Please enter PAN number" formControlName="pan_number" (input)="onPanInput($event)">
                   </mat-form-field>
+                  <div class="danger1" *ngIf="registrationForm.get('pan_number')?.errors?.['pattern']">
+                    Please enter a valid PAN number (e.g., ABCDE1234F).
+                  </div>
                 </div>
               </div>
             </div>

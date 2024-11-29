@@ -38,7 +38,7 @@ export class ViewProductModalComponent {
 
   proposalList: Array<any> = [];
 
-     displayedColumns: string[] = ['product_image', 'product_name','quantity', 'price_per_unit',  'total_amount'];
+     displayedColumns: string[] = ['product_image', 'product_name','quantity','bv_per_unit','bv', 'price_per_unit',  'total_amount'];
     // displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status', 'purchase_type', 'payment_status_client','payment_service', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','payment'];
     dataSource = new MatTableDataSource<any>([]);
     paginationLength!: number

@@ -17,15 +17,15 @@
 				<div class="login-form">
 					<form [formGroup]="loginForm">
 						<div class="form-field">
-							<label for="" class="form-label">Sponor ID</label>
+							<label for="" class="form-label">Distributor ID</label>
 							<mat-form-field class="example-full-width">
-								<mat-label>Sponsor ID</mat-label>
-								<input matInput placeholder="Enter your sponsor Id" formControlName="sponsor_id"
-									style="text-transform: uppercase;">
+								<mat-label>Distributor ID</mat-label>
+								<input matInput placeholder="Enter your distributor Id" formControlName="sponsor_id"
+									style="text-transform: uppercase;" (keyup.enter)="login(loginForm)">
 							</mat-form-field>
 							<div *ngIf="loginForm.get('sponsor_id')?.touched">
 								<div class="text-danger" *ngIf="loginForm.get('sponsor_id')?.errors?.['sponsor_id']">
-									<i class="bi bi-exclamation-circle"></i> Enter a valid sponsor ID
+									<i class="bi bi-exclamation-circle"></i> Enter a valid Distributor ID
 								</div>
 							</div>
 						</div>
@@ -35,7 +35,7 @@
 								<mat-label>Password</mat-label>
 								<!-- <input type="password" matInput placeholder="Password" formControlName="password"> -->
 								<input [type]="hide ? 'password' : 'text'" matInput placeholder="Enter your password"
-									formControlName="password" type="password">
+									formControlName="password" type="password" (keyup.enter)="login(loginForm)">
 
 								<button mat-icon-button type="button" (click)="togglePasswordVisibility()">
 									<mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>

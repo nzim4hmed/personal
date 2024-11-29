@@ -125,9 +125,14 @@ export class AlertService {
 
  showConfirmationforReg(title: string, sponsorId: string, password: string, confirmButtonText: string) {
   return Swal.fire({
-    title: title,
+    title: `
+      <span style="color: #395f13;">${title}</span>
+      <br>
+      <span style="color: #395f13; font-size: 16px;">Your Registration Successfully Done</span>
+    `,
+
     html: `
-      <p><strong>Sponsor ID:</strong> ${sponsorId}</p>
+      <p><strong>Distributor ID:</strong> ${sponsorId}</p>
       <p><strong>Password:</strong> ${password}</p>
       <p>Please keep this information secure and do not share it with anyone.</p>
     `,
@@ -137,6 +142,10 @@ export class AlertService {
     confirmButtonText: confirmButtonText
   });
 }
+
+
+
+
 
 
 

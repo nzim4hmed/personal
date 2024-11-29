@@ -20,7 +20,7 @@
         
             <!-- Weight Column -->
             <ng-container matColumnDef="sponsor_id">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> SPONSOR ID </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> DISTRIBUTOR ID </th>
               <td mat-cell *matCellDef="let element"> {{element.sponsor_id}} </td>
             </ng-container>
     
@@ -43,12 +43,20 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB </th>
           <td mat-cell *matCellDef="let element"> {{element.dob | date : 'dd-MM-yyyy'}} </td>
         </ng-container>
+        <ng-container matColumnDef="joining_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> JOINING DATE </th>
+          <td mat-cell *matCellDef="let element"> {{element.dob | date : 'dd-MM-yyyy'}} </td>
+        </ng-container>
         <!-- <ng-container matColumnDef="spv">
               <th mat-header-cell *matHeaderCellDef  mat-sort-header> MRP </th>
               <td mat-cell *matCellDef="let element"> {{element.sales_point_value}} </td>
             </ng-container> -->
         <ng-container matColumnDef="mobile_number">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> MOBILE </th>
+          <td mat-cell *matCellDef="let element"> {{element.mobile_number}} </td>
+        </ng-container>
+        <ng-container matColumnDef="pan_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> PAN NUMBER </th>
           <td mat-cell *matCellDef="let element"> {{element.mobile_number}} </td>
         </ng-container>
         <ng-container matColumnDef="marital_status">

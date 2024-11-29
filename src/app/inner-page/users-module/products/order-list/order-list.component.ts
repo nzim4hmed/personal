@@ -20,6 +20,7 @@ import { PaymentByClietComponent } from 'src/app/common/components/modal-inner-p
 import { MatInputModule } from '@angular/material/input';
 import { ViewPaymentDetailsComponent } from 'src/app/common/components/modal-inner-pages/view-payment-details/view-payment-details.component';
 import { ViewProductModalComponent } from 'src/app/common/components/modal-inner-pages/view-product-modal/view-product-modal.component';
+import { BillComponent } from 'src/app/common/components/modal-inner-pages/bill/bill.component';
 
 @Component({
   selector: 'app-order-list',
@@ -30,7 +31,7 @@ import { ViewProductModalComponent } from 'src/app/common/components/modal-inner
 })
 export class OrderListComponent implements OnInit{
   // displayedColumns: string[] = ['sr_no','product_image', 'product_name', 'category_name', 'quantity', 'price_per_unit',  'total_amount', 'payment_status_client','transaction_id', 'status' , 'payment'];
-  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status',  'payment_status_client', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','payment'];
+  displayedColumns: string[] = ['sr_no','order_number', 'transacation_id','order_status',  'payment_status_client', 'status' , 'shipping_address',   'total_amount', 'remarks', 'view_product','payment', 'bill_download'];
   dataSource = new MatTableDataSource<CheckoutList>([]);
   paginationLength!: number
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -123,6 +124,27 @@ export class OrderListComponent implements OnInit{
   veiwPayment(productDetail: any) {
     
     const dialogRef = this._dialog.open(ViewPaymentDetailsComponent, {
+      width: '100%',
+      // maxHeight: '600px',
+      panelClass: 'custom-dialog-container' ,
+      data: productDetail,
+      autoFocus: false,
+      // panelClass: 'commonDialogBox',
+      disableClose: false
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+         this.getAllOrderHistory()
+      }
+      console.log(`Dialog result: ${result}`);
+    });
+
+  }
+
+  viewbill(productDetail: any) {
+    
+    const dialogRef = this._dialog.open(BillComponent, {
       width: '100%',
       // maxHeight: '600px',
       panelClass: 'custom-dialog-container' ,

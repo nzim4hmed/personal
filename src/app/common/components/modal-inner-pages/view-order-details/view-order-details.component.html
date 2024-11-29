@@ -1,0 +1,47 @@
+<mat-card class="dialog-container">
+    <div style="display: flex; justify-content: space-between; background-color: #395f13;">
+      <img src="../../../../../assets/images/logo/always_green_logo.png" class=" w-18" style="    width: 18% !important;
+        padding: 4px 8px;">
+      <h2 mat-dialog-title style="color: white;">Order Details
+  
+      </h2>
+      <button class="closeBtn" mat-icon-button [mat-dialog-close]="false">
+        <mat-icon class="close-icon" style="color: white;">close</mat-icon>
+      </button>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+  
+        <div class="col-md-6">
+          <h3 class="text-center h11" >Order Details</h3>
+          <div class="order-details">
+  
+            <p><strong>Order Number:</strong> <span>{{viewPaymentDetails.order_number}}</span></p>
+            <p><strong>Transaction Number:</strong> <span>{{viewPaymentDetails.order_number}}</span></p>
+            <p><strong>Order Status:</strong> <span>{{viewPaymentDetails.order_status}}</span></p>
+            <p><strong>User Payment Status:</strong> <span>{{viewPaymentDetails.payment_status_client ? viewPaymentDetails.payment_status_client : '' }}</span></p>
+            <p><strong>Admin Payment Status:</strong> <span>{{viewPaymentDetails.payment_status }}</span></p>
+            <p><strong>Order Date:</strong> <span>{{viewPaymentDetails.delivery_date ? (viewPaymentDetails.delivery_date | date:'dd-MM-yyyy') : 'N/A'}}</span></p>
+            <p><strong>Delivery Date:</strong> <span>{{viewPaymentDetails.delivery_date ? (viewPaymentDetails.delivery_date | date:'dd-MM-yyyy') : 'N/A'}}</span></p>
+            <p><strong>Shipping Address:</strong> <span>{{viewPaymentDetails.shipping_address}}</span></p>
+            <!-- <p><strong>Product:</strong> <span>{{viewPaymentDetails.checkout.cart.product.product_name}}</span></p> -->
+            <!-- <p><strong>Category:</strong>
+              <span>{{viewPaymentDetails.checkout.cart.product.product_type.category_name}}</span>
+            </p> -->
+            <!-- <p><strong>Quantity:</strong> <span>{{viewPaymentDetails.checkout.cart.quantity}}</span></p> -->
+            <!-- <p><strong>Price per Unit:</strong> <span>{{viewPaymentDetails.checkout.cart.price_per_unit}}</span></p> -->
+            <p><strong>Total Amount:</strong> <span>{{viewPaymentDetails.total_amount}}</span></p>
+            <p><strong>Remarks:</strong> <span>{{viewPaymentDetails.remarks ? viewPaymentDetails.remarks : '-'}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h3 class="h11">Payment Receipt </h3>
+        
+          <img [src]="prefixforpayment + paymentFileName" alt="Receipt Image" class="receipt-image">
+        </div>
+      </div>
+    </div>
+  
+  
+  </mat-card>

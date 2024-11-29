@@ -35,7 +35,6 @@ export class SidenavComponent implements OnInit {
     console.log(this.userDetails);
     this.role = this.userDetails.role
     if(this.userDetails.designation_id)this.getDesignation()
-    
     this.getLevel()
   }
 
@@ -45,8 +44,6 @@ export class SidenavComponent implements OnInit {
         console.log(res);
         this.designationDetails = res?.data
         console.log(this.designationDetails);
-        
-
       }
     })
   }

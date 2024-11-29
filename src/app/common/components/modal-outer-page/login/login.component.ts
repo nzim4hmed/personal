@@ -78,16 +78,21 @@ export class LoginComponent implements OnInit {
           }
         },
         error: (err: any) => {
-          console.log(err);
-          if (err.status === 401) {
-            this._alert.swalPopError(err.message);
+          console.log('Login Error:', err);
+
+          // Handle the specific error response
+          if (err.statusCode == 401) {
+            this._alert.swalPopError(err.message || 'Unauthorized');
           } else {
-            this._alert.swalPopError('An error occurred: ' + err.message);
+            this._alert.swalPopError(  (err.message || 'Unknown error'));
           }
         }
       })
     }
   }
+
+
+
 
   togglePasswordVisibility() {
     this.hide = !this.hide;

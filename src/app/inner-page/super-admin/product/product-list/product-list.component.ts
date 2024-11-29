@@ -20,7 +20,7 @@ import { UpdateProductComponent } from 'src/app/common/components/modal-inner-pa
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'category_name', 'mrp', 'dp', 'bv', 'st', 'sq', 'taxRate', 'description', 'img', 'action'];
+  displayedColumns: string[] = ['position', 'name', 'category_name', 'mrp', 'dp', 'bv', 'st', 'sq','hsn_no', 'taxRate', 'description', 'img', 'action'];
   dataSource!: MatTableDataSource<any>;
   paginationLength!: number
   @ViewChild(MatPaginator) paginator!: MatPaginator;
